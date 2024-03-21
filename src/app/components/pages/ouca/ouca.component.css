@@ -173,10 +173,36 @@
 
 .select-frances {
   color: black;
-  box-shadow: 0.05px 0.1px 3px 1.5px black;
+  box-shadow: 0.05px 0.5px 3px 1px black;
 }
 
 @media screen and (max-width: 768px) {
+  .input_container {
+    border-radius: 6px;
+    width: 100%;
+    height: 36px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid black;
+    box-shadow: 0.05px 0.5px 3px 1px black;
+  }
+
+  .input_container > input {
+    width: 100%;
+    box-sizing: border-box;
+    color: black;
+  }
+
+  .select-frances {
+    color: black;
+    box-shadow: 0.05px 0.5px 3px 1px black;
+  }
+  .select{
+    border: none;
+    margin-top: 10px;
+    border-radius: 6px;
+  }
+
   .translate-container {
     flex-direction: column;
     align-items: stretch;
@@ -193,3 +219,4 @@
     margin-bottom: 10px;
   }
 }
+
