@@ -1,0 +1,20 @@
+.container_consultation {
+  margin-top: 100px;
+}
+.home-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.home-container img {
+  width: 450px;
+  color: #f5f5f5;
+}
+
+.home-container h1 {
+  color: #0000ff;
+}
+
+.home-container span {
+  color: #ff0000;
+}

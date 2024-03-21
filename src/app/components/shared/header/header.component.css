@@ -1,0 +1,97 @@
+.nav-header-container {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid black;
+  height: 100px;
+  text-align: right;
+  justify-content: right;
+  align-items: right;
+}
+
+.nav-header-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-header-itens {
+  margin-right: 15px;
+}
+
+.icone_falar {
+  width: 40px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.icone_home {
+  width: 40px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.icone_orelha {
+  width: 40px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.icon-label {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-header-itens a:hover {
+  color: blue;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  //margin-left: 10px; /* Mova a barra de busca para a direita */
+  //margin-bottom: 10px;
+  //margin-right: 20px; /* Espaço à direita para separar dos outros itens */
+}
+
+.search-container input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.search-container button {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #0080c0;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #1a1aff;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-header-links {
+    justify-content: center;
+  }
+
+  .nav-header-itens {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-header-links {
+    justify-content: center;
+  }
+}

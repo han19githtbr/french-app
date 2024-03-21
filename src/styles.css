@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  background-color: #e8f4ff;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  font-family: 'Times New Roman';
+  margin: 0;
+}
+
+.container_consultation {
+  margin-top: 40px;
+  text-align: center;
+  background: none;
+  top: 0;
+}
+
+.container_consultation > img {
+  margin-top: -3rem;
+  width: 120px;
+  border-radius: 50%;
+  border: 3px solid blue;
+}
+
+@media screen and (max-width: 1200px) {
+  .container_gravar > img {
+    width: 110px;
+    border-radius: 50%;
+  }
+}

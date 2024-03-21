@@ -1,0 +1,195 @@
+.container_ouco {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.container_ouco > img {
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+}
+
+.img-container {
+  margin-top: -2rem;
+  text-align: center;
+}
+
+.title {
+  margin-top: -5rem;
+  text-align: center;
+  color: #0000ff;
+}
+
+.title span {
+  color: #ff0000;
+}
+
+.input_container {
+  border-radius: 6px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 2px solid black;
+  box-shadow: 0.05px 0.1px 3px 1.5px black;
+}
+
+.input_container > input {
+  width: 100%;
+  box-sizing: border-box;
+  color: black;
+}
+
+.select{
+  border: 2px solid black;
+  border-radius: 6px;
+}
+
+.translate-container {
+  padding-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 5% 20px;
+}
+
+.translate-container input[type="text"],
+.translate-container select {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.translate-container button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #0000ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 2rem;
+  transition: transform 0.2s;
+  box-shadow: 0.05px 0.1px 3px 2px black;
+}
+
+.translate-container button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.image-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.card {
+  position: relative;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px black;
+}
+
+.card img:hover {
+  transform: scale(1.07);
+}
+
+.clique_ouça {
+  text-align: center;
+  margin-top: 150px;
+  color: #ff0000;
+}
+
+.clique_ouça span {
+  color: #0000ff;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.speed-control label {
+  margin-right: 10px;
+  color: #0000ff;
+  font-weight: bold;
+}
+
+.spoken-word {
+  position: absolute;
+  background: none;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  left: 0;
+}
+
+.listen-button {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0000ff;
+  color: #fff;
+  padding: 8px 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 3px 2px 3px 3px black;
+}
+
+.palavra_falada {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  text-align: center;
+  bottom: 0;
+  margin-top: 200px;
+}
+
+#speakingSpeed {
+  color: black;
+}
+
+.select-frances {
+  color: black;
+  box-shadow: 0.05px 0.1px 3px 1.5px black;
+}
+
+@media screen and (max-width: 768px) {
+  .translate-container {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 10px 20px;
+  }
+
+  .translate-container button {
+    margin-left: 0.08rem;
+  }
+
+  .translate-container input[type="text"],
+  .translate-container select,
+  .translate-container button {
+    margin-bottom: 10px;
+  }
+}
