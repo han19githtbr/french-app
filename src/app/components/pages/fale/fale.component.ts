@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-fale',
@@ -13,6 +14,8 @@ export class FaleComponent implements OnInit {
   recognition: any; // Referência ao reconhecimento de fala
   savedContents: string[] = []; // Array para armazenar o conteúdo salvo
   selectedLanguage: string = 'fr-FR'; // Idioma padrão para gravação
+
+  constructor(private toastr: ToastrService) {}
 
 
   ngOnInit() {
@@ -81,8 +84,16 @@ export class FaleComponent implements OnInit {
       this.timerValue = 120;
       // Definir o temporizador como null para indicar que não está em execução
       this.timer = null;
+
+      // Exibir toast personalizado
+      this.toastr.success('O áudio foi gravado com sucesso', 'Gravação Concluída', {
+        closeButton: true,
+        timeOut: 5000, // 5000 milissegundos = 5 segundos
+        positionClass: 'toast-bottom-right' // Posição do toast
+      });
     }
   }
+
 
   startTimer() {
     this.timer = setInterval(() => {
@@ -103,7 +114,6 @@ export class FaleComponent implements OnInit {
     }, 1000); // Atualizar a cada segundo
   }
 
-
   saveContent() {
     if (this.content.trim() !== '') {
       this.savedContents.push(this.content.trim());
@@ -112,7 +122,6 @@ export class FaleComponent implements OnInit {
       localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
     }
   }
-
 
   deleteContent(content: string) {
     const index = this.savedContents.indexOf(content);

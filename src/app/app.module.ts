@@ -8,7 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-//import { DialogoComponent } from './components/pages/dialogo/dialogo.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -21,8 +23,14 @@ import { FooterComponent } from './components/shared/footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      toastClass: 'toast-custom' // Define a classe de posição
+    }),
   ],
   providers: [TranslationService],
   bootstrap: [AppComponent]
