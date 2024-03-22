@@ -86,14 +86,23 @@ export class FaleComponent implements OnInit {
       this.timer = null;
 
       // Exibir toast personalizado
-      this.toastr.success('O áudio foi gravado com sucesso', 'Gravação Concluída', {
+      this.toastr.success('Conteúdo gravado com sucesso', 'Gravação concluída', {
+        toastClass: 'toast-custom',
+        progressBar: true,
         closeButton: true,
-        timeOut: 5000, // 5000 milissegundos = 5 segundos
-        positionClass: 'toast-bottom-right' // Posição do toast
+        timeOut: 3000, // 3000 milissegundos = 3 segundos
+        positionClass: 'toast-bottom-right', // Posição do toast
+        tapToDismiss: false
       });
     }
   }
 
+
+  showToast() {
+    this.toastr.success('Mensagem de exemplo', 'Título do Toast', {
+      closeButton: true
+    });
+  }
 
   startTimer() {
     this.timer = setInterval(() => {
@@ -120,6 +129,16 @@ export class FaleComponent implements OnInit {
       this.content = '';
 
       localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
+
+      this.toastr.success('Texto salvo com sucesso', 'Gravação concluída', {
+        toastClass: 'toast-custom',
+        progressBar: true,
+        closeButton: true,
+        timeOut: 3000, // 3000 milissegundos = 3 segundos
+        positionClass: 'toast-bottom-right', // Posição do toast
+        tapToDismiss: false
+      });
+
     }
   }
 
@@ -127,6 +146,16 @@ export class FaleComponent implements OnInit {
     const index = this.savedContents.indexOf(content);
     if (index !== -1) {
       this.savedContents.splice(index, 1);
+
+      this.toastr.success('Conteúdo removido com sucesso', 'Remoção concluída', {
+        toastClass: 'toast-custom',
+        progressBar: true,
+        closeButton: true,
+        timeOut: 3000, // 3000 milissegundos = 3 segundos
+        positionClass: 'toast-bottom-right', // Posição do toast
+        tapToDismiss: false
+      });
+
     }
   }
 

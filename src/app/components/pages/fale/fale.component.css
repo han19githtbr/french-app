@@ -168,13 +168,6 @@ button.recording {
   height: 30px;
 }
 
-.toast-custom {
-  background-color: #333; /* Cor de fundo */
-  color: #fff; /* Cor do texto */
-  font-size: 16px; /* Tamanho da fonte */
-  border-radius: 8px; /* Raio da borda */
-}
-
 @keyframes pulse {
   from {
     box-shadow: 0 0 0 0 rgba(255, 4, 0, .7), 0 0 0 0 rgba(255, 4, 0, .7);

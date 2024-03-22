@@ -22,9 +22,77 @@
   border: 3px solid blue;
 }
 
+/* Estilo para a caixa de mensagem */
+.toast-custom {
+  border: 2px solid blue; /* Adiciona uma borda azul de 1px */
+  border-radius: 4px; /* Arredonda as bordas */
+  box-shadow: 1px 1px 1px 1px azul; /* Remove a sombra padrão */
+  background-color: #eaf2ff; /* Define a cor de fundo como branca */
+}
+
+.toast-custom .toast-message {
+  background-color: #eaf2ff; /* Define a cor de fundo como azul claro */
+  padding: 4px;
+}
+
+.toast-message {
+  color: #0080c0;
+}
+
+.toast-custom .toast-title {
+  padding: 4px; /* Adiciona um preenchimento de 4px */
+  color: #0bafff;
+}
+
+/* Estilo para o botão de fechar */
+.toast-custom .toast-close-button {
+  color: red; /* Define a cor do ícone do botão de fechar como vermelho */
+  background-color: transparent !important; /* Remove a cor de fundo do botão */
+  border: none; /* Remove a borda do botão */
+  font-size: 16px; /* Define o tamanho da fonte */
+  line-height: 1; /* Define a altura da linha */
+  padding: 0; /* Remove o preenchimento interno */
+  margin: 0; /* Remove a margem */
+}
+
+/* Estilo para o ícone do botão de fechar */
+.toast-custom .toast-close-button::before {
+  font-size: 16px; /* Define o tamanho do ícone */
+}
+
+.toast-custom .toast-progress {
+  margin-top: 5px; /* Espaçamento entre a barra de progresso e o texto */
+}
+
+.toast-custom {
+  animation: slideInRight 0.5s, slideOutRight 0.5s 3.5s; /* Animação de entrada e saída */
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .container_gravar > img {
     width: 110px;
     border-radius: 50%;
   }
 }
+
+@import "../node_modules/ngx-toastr/toastr.css";
+
+
