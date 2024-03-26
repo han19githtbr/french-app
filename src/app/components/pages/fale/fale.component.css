@@ -101,7 +101,7 @@ button.recording {
 
 #timer {
   display: inline-block;
-  background-color: blue;
+  background-color: #09afff;
   padding: 5px 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px 3px black;
@@ -166,6 +166,18 @@ button.recording {
 .icone-play {
   width: 40px;
   height: 30px;
+}
+
+.button-container {
+  display: flex; /* Configura um layout de linha */
+  justify-content: space-between; /* Distribui os botões igualmente na linha */
+  margin-bottom: 10px; /* Espaçamento inferior para separar dos outros elementos */
+}
+
+.button-container button {
+  flex: 1; /* Garante que os botões ocupem a mesma largura */
+  height: 40px;
+  width: 180px;
 }
 
 @keyframes pulse {

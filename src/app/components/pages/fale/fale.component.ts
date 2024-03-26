@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+//import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-fale',
@@ -17,6 +18,10 @@ export class FaleComponent implements OnInit {
 
   constructor(private toastr: ToastrService) {}
 
+
+  /*showAudioNotification() {
+    this.headerComponent.addNotification('Você gravou um áudio.'); // Adicionar notificação ao cabeçalho
+  }*/
 
   ngOnInit() {
     const savedContents = localStorage.getItem('savedContents');
@@ -85,18 +90,29 @@ export class FaleComponent implements OnInit {
       // Definir o temporizador como null para indicar que não está em execução
       this.timer = null;
 
-      // Exibir toast personalizado
-      this.toastr.success('Conteúdo gravado com sucesso', 'Gravação concluída', {
-        toastClass: 'toast-custom',
-        progressBar: true,
-        closeButton: true,
-        timeOut: 3000, // 3000 milissegundos = 3 segundos
-        positionClass: 'toast-bottom-right', // Posição do toast
-        tapToDismiss: false
-      });
+      if (this.content.trim() === '') {
+        // Se o conteúdo estiver vazio, exibe uma mensagem de erro em vermelho
+        this.toastr.error('Nenhum conteúdo gravado. Grave novamente!', 'Erro de gravação', {
+          toastClass: 'toast-error',
+          progressBar: true,
+          closeButton: true,
+          timeOut: 3000, // 3000 milissegundos = 3 segundos
+          positionClass: 'toast-bottom-right', // Posição do toast
+          tapToDismiss: false
+        });
+      } else {
+        // Se houver conteúdo, exibe uma mensagem de sucesso
+        this.toastr.success('Conteúdo gravado com sucesso', 'Gravação concluída', {
+          toastClass: 'toast-custom',
+          progressBar: true,
+          closeButton: true,
+          timeOut: 3000, // 3000 milissegundos = 3 segundos
+          positionClass: 'toast-bottom-right', // Posição do toast
+          tapToDismiss: false
+        });
+      }
     }
   }
-
 
   showToast() {
     this.toastr.success('Mensagem de exemplo', 'Título do Toast', {
@@ -128,6 +144,8 @@ export class FaleComponent implements OnInit {
       this.savedContents.push(this.content.trim());
       this.content = '';
 
+      //this.headerComponent.addNotification('Você salvou um texto.');
+
       localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
 
       this.toastr.success('Texto salvo com sucesso', 'Gravação concluída', {
@@ -139,6 +157,15 @@ export class FaleComponent implements OnInit {
         tapToDismiss: false
       });
 
+    } else {
+      this.toastr.error('Nenhum conteúdo detectado. Tente novamente!', 'Erro de gravação', {
+        toastClass: 'toast-error',
+        progressBar: true,
+        closeButton: true,
+        timeOut: 3000, // 3000 milissegundos = 3 segundos
+        positionClass: 'toast-bottom-right', // Posição do toast
+        tapToDismiss: false
+      });
     }
   }
 
@@ -176,5 +203,31 @@ export class FaleComponent implements OnInit {
     const minutesStr: string = minutes < 10 ? '0' + minutes : String(minutes);
     const secondsStr: string = remainingSeconds < 10 ? '0' + remainingSeconds : String(remainingSeconds);
     return `${minutesStr}:${secondsStr}`;
+  }
+
+  playText() {
+    if (this.content.trim() === '') {
+      alert('Sem conteúdo para reproduzir.');
+      return; // Se não houver conteúdo, exibe uma mensagem de erro e sai do método
+    }
+
+    const languageCodeMap: { [key: string]: string } = {
+      'fr': 'fr-FR',
+      'pt': 'pt-BR',
+      'en': 'en-US'
+    };
+
+    const languageCode = languageCodeMap[this.selectedLanguage.split('-')[0]] || 'en-US';
+
+    // Define o texto a ser reproduzido
+    const textToSpeak = this.content;
+
+    // Usando a funcionalidade de síntese de voz do navegador para reproduzir o texto
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+    utterance.text = textToSpeak;
+    utterance.lang = languageCode;
+
+    window.speechSynthesis.speak(utterance);
   }
 }

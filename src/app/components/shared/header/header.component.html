@@ -31,20 +31,8 @@
       <div class="icon-label" *ngIf="showFalarLabel">Falar</div>
       <i class="fa-solid fa-microphone"></i>
     </li>
-    <!--<li class="nav-header-itens">
-      <a [routerLink]="['/dialogo']" routerLinkActive="active">Conversa simulada</a>
-    </li>-->
-  </ul>
 
-  <!--<div class="search-container">
-    <input
-      type="text"
-      [(ngModel)]="searchQuery"
-      (keyup.enter)="search()"
-      placeholder="Pesquise uma imagem..."
-    >
-    <button (click)="search()">Pesquisar</button>
-  </div>-->
+  </ul>
 
   <ul class="nav-header-links ml-auto">
     <li class="nav-header-itens dropdown">
@@ -53,4 +41,12 @@
       </a>
     </li>
   </ul>
+
+  
+  <!-- Lista de notificações -->
+  <ul *ngIf="showNotifications" class="notification-list">
+    <li *ngFor="let notification of notifications">{{ notification }}</li>
+    <li *ngIf="notifications.length === 0">Sem notificações</li>
+  </ul>
+
 </nav>

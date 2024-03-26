@@ -11,9 +11,29 @@ export class HeaderComponent {
   showHomeLabel: boolean = false;
   showOuvirLabel: boolean = false;
   showFalarLabel: boolean = false;
+  notificationCount: number = 0;
+  showNotifications: boolean = false;
+  notifications: string[] = [];
 
   constructor(private router: Router) { }
 
+
+  toggleNotifications() {
+    this.showNotifications = !this.showNotifications;
+    if (this.showNotifications) {
+      this.notificationCount = 0;
+    }
+  }
+
+  addNotification(message: string) {
+    this.notificationCount++;
+    this.notifications.push(message);
+  }
+
+  clearNotifications() {
+    this.notificationCount = 0;
+    this.notifications = [];
+  }
 
   showLabel(label: string) {
     switch (label) {

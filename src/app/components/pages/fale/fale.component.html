@@ -12,7 +12,13 @@
   <button (click)="clearContent()">Limpar Conteúdo</button>
   <div id="timer">{{ formatTime(timerValue) }}</div>
   <textarea class="gravou" [(ngModel)]="content" placeholder="A nota que você gravou aparece aqui"></textarea>
-  <button (click)="saveContent()">Salvar Texto</button>
+  <div class="button-container">
+    <button (click)="saveContent()" [disabled]="content.trim() === ''">Salvar Texto</button>
+    <button (click)="playText()" [disabled]="content.trim() === ''">Reproduzir Texto</button> <!-- Novo botão -->
+  </div>
+  <div *ngIf="content.trim() === ''" class="error-message">
+    Sem conteúdo para reproduzir.
+  </div> <!-- Mensagem de erro -->
 
   <div *ngIf="savedContents.length > 0" class="saved-content">
     <h3>Conteúdo Salvo:</h3>
