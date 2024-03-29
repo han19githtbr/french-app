@@ -1,5 +1,5 @@
 *{
-  //background-color: #b5daff;
+  background-color: #b5daff;
   list-style: none;
   text-decoration: none;
   color: black;
@@ -8,12 +8,12 @@
 }
 
 body {
-  overflow-y: hidden;
-  background-image: url('assets/img/learn.jpg');
+  //overflow-y: hidden;
+  //background-image: url('assets/img/learn.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: transparent;
 }
 
 .mensagem_boas_vindas {
