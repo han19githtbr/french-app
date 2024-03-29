@@ -27,6 +27,17 @@ export class OucaComponent implements OnInit {
     // Adicione outras imagens aqui...
   ];
 
+
+  conversations: { description: string, audioUrl: string }[] = [
+    { description: 'Salut, comment tu t\'appelles?', audioUrl: '../../../assets/audio/salut_comment_tu_tappelles.mp3' },
+    { description: 'Salut, je m’appelle Joseph, et toi, comment tu t’appelles?', audioUrl: '../../../assets/audio/salut_je_mapelle_joseph.mp3' },
+    { description: 'Enchanté, Joseph! Je m\'appelle Paul', audioUrl: '../../../assets/audio/enchante_joseph_je_mapelle_paul.mp3' },
+    { description: 'Je suis ravi de connaître, Paul!', audioUrl: '../../../assets/audio/je_suis_ravi_de_connaitre_paul.mp3' },
+    { description: 'Salut, Paul. À bientôt!', audioUrl: '../../../assets/audio/salut_paul_a_bientot.mp3' },
+    { description: 'À bientôt, Joseph!', audioUrl: '../../../assets/audio/a_bientot_joseph.mp3' },
+  ];
+
+
   constructor(private translationService: TranslationService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -67,6 +78,22 @@ export class OucaComponent implements OnInit {
     this.spokenWord = description; // Atualiza a palavra falada
   }
 
+
+  speakDescriptionVideo(description: string, audioUrl: string, delay: number): void {
+    setTimeout(() => {
+      this.playAudio(audioUrl);
+      this.spokenWord = description;
+    }, delay * 1000);
+  }
+
+
+  playAudio(audioUrl: string): void {
+    const audio = new Audio(audioUrl);
+    audio.playbackRate = this.speakingSpeed;
+    audio.play();
+  }
+
+
   onSpeedChange(event: any): void {
     this.speakingSpeed = event.target.value;
   }
@@ -80,5 +107,11 @@ export class OucaComponent implements OnInit {
       this.router.navigate(['/translate'], { queryParams: { q: this.searchKeyword } });
     }
   }
+
+
+  /*onVideoClick(description: string, videoUrl: string): void {
+    const delayInSeconds = 7;
+    this.speakDescription(description, videoUrl, delayInSeconds);
+  }*/
 
 }

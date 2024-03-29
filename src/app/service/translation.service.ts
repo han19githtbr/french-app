@@ -12,4 +12,10 @@ export class TranslationService {
     utterance.rate = speakingSpeed; // Define a velocidade da fala
     speechSynthesis.speak(utterance);
   }
+
+  speakAudio(audioUrl: string, speakingSpeed: number): void {
+    const audio = new Audio(audioUrl);
+    audio.playbackRate = speakingSpeed;
+    audio.play();
+  }
 }

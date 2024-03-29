@@ -1,11 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
 *{
-  background-color: #e8f4ff;
+  //background-color: #b5daff;
   list-style: none;
   text-decoration: none;
   color: black;
   font-family: 'Times New Roman';
   margin: 0;
+}
+
+body {
+  overflow-y: hidden;
+  background-image: url('assets/img/learn.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mensagem_boas_vindas {
+  margin-top: -200px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: -200px; /* inicialmente fora da tela à esquerda */
+  transition: left 1s ease-in-out;
+  z-index: 9999;
+}
+.aceno_gif {
+  width: 70px; /* ajuste conforme necessário */
 }
 
 .container_consultation {
@@ -135,5 +158,3 @@
 }
 
 @import "../node_modules/ngx-toastr/toastr.css";
-
-

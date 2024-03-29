@@ -1,40 +1,44 @@
-<h1 class="testar_fala">Teste a sua fala</h1>
-<div class="container_gravar">
-  <img
-    class="icone_gravar"
-    src="../../../../assets/img/gravar.gif"
-    alt="gravar"
-  />
-</div>
-<div class="new-note-card">
-  <i class="fa-thin fa-microphone"></i>
-  <button (click)="toggleRecording()" [ngClass]="{ 'recording': isRecording }">{{ isRecording ? 'Parar Gravação' : 'Iniciar Gravação' }}</button>
-  <button (click)="clearContent()">Limpar Conteúdo</button>
-  <div id="timer">{{ formatTime(timerValue) }}</div>
-  <textarea class="gravou" [(ngModel)]="content" placeholder="A nota que você gravou aparece aqui"></textarea>
-  <div class="button-container">
-    <button (click)="saveContent()" [disabled]="content.trim() === ''">Salvar Texto</button>
-    <button (click)="playText()" [disabled]="content.trim() === ''">Reproduzir Texto</button> <!-- Novo botão -->
+<div class="parallax-container">
+  <h1 class="testar_fala">Teste a <span class="sua-fala">sua fala</span></h1>
+  <div class="container_gravar">
+    <img
+      class="icone_gravar"
+      src="../../../../assets/img/gravar.gif"
+      alt="gravar"
+    />
   </div>
-  <div *ngIf="content.trim() === ''" class="error-message">
-    Sem conteúdo para reproduzir.
-  </div> <!-- Mensagem de erro -->
+  <div class="new-note-card">
+    <i class="fa-thin fa-microphone"></i>
+    <button (click)="toggleRecording()" [ngClass]="{ 'recording': isRecording }">{{ isRecording ? 'Parar Gravação' : 'Iniciar Gravação' }}</button>
+    <button (click)="clearContent()">Limpar Conteúdo</button>
+    <div id="timer">{{ formatTime(timerValue) }}</div>
+    <textarea class="gravou" [(ngModel)]="content" placeholder="A nota que você gravou aparece aqui"></textarea>
+    <!--<button (click)="downloadTextAsAudio()">Baixar Texto como Áudio</button>-->
 
-  <div *ngIf="savedContents.length > 0" class="saved-content">
-    <h3>Conteúdo Salvo:</h3>
-    <div *ngFor="let savedContent of savedContents" class="saved-item">
-      <div>{{ savedContent }}</div>
-      <button class="delete-button" (click)="deleteContent(savedContent)">Apagar</button>
+    <div class="button-container">
+      <button (click)="saveContent()" [disabled]="content.trim() === ''">Salvar Texto</button>
+      <button (click)="playText()" [disabled]="content.trim() === ''">Reproduzir Texto</button> <!-- Novo botão -->
     </div>
-  </div>
+    <div *ngIf="content.trim() === ''" class="error-message">
+      Sem conteúdo para reproduzir.
+    </div> <!-- Mensagem de erro -->
 
-  <div class="language-select-container">
-    <h4 class="escolher_idioma">Escolhe um idioma</h4>
-    <select class="select-container" [(ngModel)]="selectedLanguage">
-      <option value="fr-FR">Francês</option>
-      <option value="pt-BR">Português (Brasil)</option>
-      <option value="en-EN">Inglês</option>
-      <!-- Adicione mais opções de idiomas aqui, se necessário -->
-    </select>
+    <div *ngIf="savedContents.length > 0" class="saved-content">
+      <h3>Conteúdo Salvo:</h3>
+      <div *ngFor="let savedContent of savedContents" class="saved-item">
+        <div class="text-content">{{ savedContent }}</div>
+        <button class="delete-button" (click)="deleteContent(savedContent)">Apagar</button>
+      </div>
+    </div>
+
+    <div class="language-select-container">
+      <h4 class="escolher_idioma">Escolhe um idioma</h4>
+      <select class="select-container" [(ngModel)]="selectedLanguage">
+        <option value="fr-FR">Francês</option>
+        <option value="pt-BR">Português (Brasil)</option>
+        <option value="en-EN">Inglês</option>
+        <!-- Adicione mais opções de idiomas aqui, se necessário -->
+      </select>
+    </div>
   </div>
 </div>
