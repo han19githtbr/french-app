@@ -26,7 +26,7 @@ function animateMessage() {
 // Espera 3 segundos após o carregamento da página
 setTimeout(function() {
   var mensagem = document.getElementById('welcome_message');
-  var text = "Olá, vamos praticar, está pronto(a)?";
+  var text = "Olá, vamos praticar?";
   var interval = 100;
 
   // Inicia a digitação da mensagem
