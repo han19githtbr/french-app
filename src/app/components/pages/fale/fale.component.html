@@ -23,7 +23,7 @@
     </div> <!-- Mensagem de erro -->
 
     <div *ngIf="savedContents.length > 0" class="saved-content">
-      <h3>Conteúdo Salvo:</h3>
+      <h2>Conteúdo Salvo</h2>
       <div *ngFor="let savedContent of savedContents" class="saved-item">
         <div class="text-content">{{ savedContent }}</div>
         <button class="delete-button" (click)="deleteContent(savedContent)">Apagar</button>
