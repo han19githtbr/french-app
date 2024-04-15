@@ -82,10 +82,50 @@
       <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
     </div>
 
-    <div class="card" id="Plante" (mouseover)="onImageClick('Une plante')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Plante' }">
-      <img src="../../../assets/img/natureza.jpg" alt="Plante">
-      <div class="spoken-word" *ngIf="spokenWord === 'Une plante'">{{ spokenWord }}</div>
-      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
-    </div>
+
   </div>
 
+  <h2 class="clique_ouça"><span>Passe o mouse nessas imagens</span> e ouça</h2>
+  <div class="gif-container">
+    <div class="card" id="Plante" (mouseover)="onImageClick('Se réveiller')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Se réveiller' }">
+      <img src="../../../assets/img/acordar.gif" alt="Acordar">
+      <div class="spoken-word" *ngIf="spokenWord === 'Se réveiller'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('Il se promène')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Il se promène' }">
+      <img src="../../../assets/img/andar.gif" alt="Andar">
+      <div class="spoken-word" *ngIf="spokenWord === 'Il se promène'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('Il fait du sport')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Il fait du sport' }">
+      <img src="../../../assets/img/correr.gif" alt="Plante">
+      <div class="spoken-word" *ngIf="spokenWord === 'Il fait du sport'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('Il est en train de dormir')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Il est en train de dormir' }">
+      <img src="../../../assets/img/dormir.gif" alt="Plante">
+      <div class="spoken-word" *ngIf="spokenWord === 'Il est en train de dormir'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('Il joue au football')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Il joue au football' }">
+      <img src="../../../assets/img/futebol.gif" alt="Plante">
+      <div class="spoken-word" *ngIf="spokenWord === 'Il joue au football'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('Jouer de la guitarre')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Jouer de la guitarre' }">
+      <img src="../../../assets/img/guitarra.gif" alt="Plante">
+      <div class="spoken-word" *ngIf="spokenWord === 'Jouer de la guitarre'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('Chanter est bon pour la santé')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Chanter est bon pour la santé' }">
+      <img src="../../../assets/img/microfone.gif" alt="Plante">
+      <div class="spoken-word" *ngIf="spokenWord === 'Chanter est bon pour la santé'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    <div class="card" id="Plante" (mouseover)="onImageClick('La musique aide à dormir')" [ngClass]="{ 'blink': imageFound && spokenWord === 'La musique aide à dormir' }">
+      <img src="../../../assets/img/musica.gif" alt="Plante">
+      <div class="spoken-word" *ngIf="spokenWord === 'La musique aide à dormir'">{{ spokenWord }}</div>
+      <!--<button class="listen-button" (mouseover)="speakDescription('Piloter')">Escute</button>-->
+    </div>
+    
+  </div>
