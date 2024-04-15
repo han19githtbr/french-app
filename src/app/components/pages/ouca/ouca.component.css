@@ -40,8 +40,21 @@
 }
 
 .select{
-  border: 2px solid black;
+  //border: 2px solid black;
   border-radius: 6px;
+}
+
+.escolher {
+  margin-left: 5px;
+  border-radius: 3px;
+  width: 40px;
+  color: white;
+  background-color: #0080ff;
+  border: 2px solid #ff1c1c;
+}
+
+.escolher:hover {
+  cursor: pointer;
 }
 
 .translate-container {
@@ -100,9 +113,15 @@
   cursor: pointer;
   margin-bottom: 150px;
   justify-content: center;
+  //padding-top: 30px;
   text-align: center;
   align-items: center;
   margin-left: 24px;
+}
+
+.gif-clique {
+  font-weight: bold;
+  color: #0080c0;
 }
 
 .card {
@@ -139,6 +158,18 @@
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+}
+
+.tentativas-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.tentativas-control label {
+  font-weight: bold;
 }
 
 .speed-control label {
@@ -188,6 +219,12 @@
 .select-frances {
   color: black;
   box-shadow: 0.05px 0.5px 3px 1px black;
+}
+
+.select-option {
+  color: black;
+  box-shadow: 0.05px 0.5px 3px 1px black;
+  border: none;
 }
 
 @media screen and (max-width: 768px) {

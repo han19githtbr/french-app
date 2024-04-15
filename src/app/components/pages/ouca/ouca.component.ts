@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslationService } from '../../../service/translation.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ouca',
@@ -9,9 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OucaComponent implements OnInit {
   word: string = '';
+  option: string = 'fr';
   language: string = 'fr';
   searchKeyword: string = '';
   speakingSpeed: number = 1; // Velocidade padrão de fala
+  changingAttempts: number = 3;
   spokenWord: string = '';
   imageFound: boolean = false;
 
@@ -38,7 +41,59 @@ export class OucaComponent implements OnInit {
   ];
 
 
-  constructor(private translationService: TranslationService, private route: ActivatedRoute, private router: Router) { }
+  checkOption(option: string, correctOption: string): void {
+
+    if (option === correctOption) {
+      this.toastr.success('Você acertou a legenda', 'Parabéns', {
+        toastClass: 'toast-custom',
+        progressBar: true,
+        closeButton: true,
+        timeOut: 3000, // 3000 milissegundos = 3 segundos
+        positionClass: 'toast-bottom-right', // Posição do toast
+        tapToDismiss: false
+      });
+      this.translationService.speakWord('Parabéns! Você acertou a legenda', 'pt', this.speakingSpeed);
+    } else {
+      this.toastr.error('Errou a legenda!', 'Errou', {
+        toastClass: 'toast-error',
+        progressBar: true,
+        closeButton: true,
+        timeOut: 3000, // 3000 milissegundos = 3 segundos
+        positionClass: 'toast-bottom-right', // Posição do toast
+        tapToDismiss: false
+      });
+      this.translationService.speakWord('Errou a legenda! Tente novamente', 'pt', this.speakingSpeed);
+      this.changingAttempts--; // Diminuir a quantidade de tentativas
+      if (this.changingAttempts === 0) {
+        this.toastr.error('Número de tentativas esgotadas!', 'Fim de jogo', {
+          toastClass: 'toast-error',
+          progressBar: true,
+          closeButton: true,
+          timeOut: 3000, // 3000 milissegundos = 3 segundos
+          positionClass: 'toast-bottom-right', // Posição do toast
+          tapToDismiss: false
+        });
+        this.translationService.speakWord('Número de tentativas esgotadas! Fim de Jogo', 'pt', this.speakingSpeed);
+        this.changingAttempts = 3;
+
+      }
+
+    }
+  }
+
+
+  imagens: { description: string, url: string, options: string[], correctOption: string }[] = [
+    { description: 'Reveil', url: '../../../assets/img/acordar.gif', options: ['Dormir', 'Se réveiller', 'Se reposer', 'Aller à la montagne'], correctOption: 'Se réveiller' },
+    { description: 'Marche', url: '../../../assets/img/andar.gif', options: ['Courrir', 'Manger', 'Marcher', 'Vendre des chaussures'], correctOption: 'Marcher' },
+    { description: 'Corre', url: '../../../assets/img/correr.gif', options: ['Faire du vélo', 'Se reposer', 'Courrir', 'Parler'], correctOption: 'Courrir' },
+    { description: 'Dorme', url: '../../../assets/img/dormir.gif', options: ['Chanter', 'Aller à la plage', 'Dormir', 'Le voleur'], correctOption: 'Dormir' },
+    { description: 'Fute', url: '../../../assets/img/futebol.gif', options: ['Prendre une douche', 'Jouer au football', 'Regarder la télé', 'Une montre'], correctOption: 'Jouer au football' },
+    { description: 'Guitarre', url: '../../../assets/img/guitarra.gif', options: ['Manger', 'Rentrer à la maison', 'Jouer à la guitarre', 'Remercier'], correctOption: 'Jouer à la guitarre' },
+    { description: 'Chante', url: '../../../assets/img/microfone.gif', options: ['Travailler', 'Nager', 'Chanter', 'Corriger'], correctOption: 'Chanter' },
+    { description: 'Musique', url: '../../../assets/img/musica.gif', options: ['Voyager', 'Écouter de la musique', 'Sortir', 'Faire le nettoyage'], correctOption: 'Écouter de la musique' },
+  ];
+
+  constructor(private translationService: TranslationService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -78,7 +133,6 @@ export class OucaComponent implements OnInit {
     this.spokenWord = description; // Atualiza a palavra falada
   }
 
-
   speakDescriptionVideo(description: string, audioUrl: string, delay: number): void {
     setTimeout(() => {
       this.playAudio(audioUrl);
@@ -86,13 +140,11 @@ export class OucaComponent implements OnInit {
     }, delay * 1000);
   }
 
-
   playAudio(audioUrl: string): void {
     const audio = new Audio(audioUrl);
     audio.playbackRate = this.speakingSpeed;
     audio.play();
   }
-
 
   onSpeedChange(event: any): void {
     this.speakingSpeed = event.target.value;
@@ -108,10 +160,8 @@ export class OucaComponent implements OnInit {
     }
   }
 
-
-  /*onVideoClick(description: string, videoUrl: string): void {
-    const delayInSeconds = 7;
-    this.speakDescription(description, videoUrl, delayInSeconds);
-  }*/
+  controlarTentativas(value: number): void {
+    this.changingAttempts = value;
+  }
 
 }
