@@ -12,7 +12,6 @@
     <button (click)="clearContent()">Limpar Conteúdo</button>
     <div id="timer">{{ formatTime(timerValue) }}</div>
     <textarea class="gravou" [(ngModel)]="content" placeholder="A nota que você gravou aparece aqui"></textarea>
-    <!--<button (click)="downloadTextAsAudio()">Baixar Texto como Áudio</button>-->
 
     <div class="button-container">
       <button (click)="saveContent()" [disabled]="content.trim() === ''">Salvar Texto</button>
@@ -20,7 +19,7 @@
     </div>
     <div *ngIf="content.trim() === ''" class="error-message">
       Sem conteúdo para reproduzir.
-    </div> <!-- Mensagem de erro -->
+    </div>
 
     <div *ngIf="savedContents.length > 0" class="saved-content">
       <h2>Conteúdo Salvo</h2>
@@ -36,7 +35,6 @@
         <option value="fr-FR">Francês</option>
         <option value="pt-BR">Português (Brasil)</option>
         <option value="en-EN">Inglês</option>
-        <!-- Adicione mais opções de idiomas aqui, se necessário -->
       </select>
     </div>
   </div>

@@ -19,10 +19,6 @@ export class FaleComponent implements OnInit {
   constructor(private toastr: ToastrService) {}
 
 
-  /*showAudioNotification() {
-    this.headerComponent.addNotification('Você gravou um áudio.'); // Adicionar notificação ao cabeçalho
-  }*/
-
   ngOnInit() {
     const savedContents = localStorage.getItem('savedContents');
 
@@ -143,8 +139,6 @@ export class FaleComponent implements OnInit {
     if (this.content.trim() !== '') {
       this.savedContents.push(this.content.trim());
       this.content = '';
-
-      //this.headerComponent.addNotification('Você salvou um texto.');
 
       localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
 
@@ -295,5 +289,4 @@ export class FaleComponent implements OnInit {
       }, 500);
     };
   }
-
 }
