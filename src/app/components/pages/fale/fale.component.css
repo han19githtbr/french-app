@@ -1,17 +1,27 @@
 .testar_fala {
   text-align: center;
   margin-top: 60px;
-  color: #0000ff;
+  color: #ffffff;
+  font-size: 30px;
+  font-family: "Times New Roman";
+}
+
+.error-message {
+  color: #ffffff;
+  font-size: 20px;
 }
 
 .sua-fala {
-  color: red;
+  font-size: 30px;
+  font-family: "Times New Roman";
+  color: white;
 }
 .new-note-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  bottom: 0;
   margin-top: 150px;
 }
 
@@ -34,13 +44,13 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   background-color: #f12d0a;
   color: black;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid black;
-  //box-shadow: 1px 1px 6px 2px black;
+  box-shadow: 2px 2px 6px 4px black;
   margin: 5px;
 }
 
@@ -60,10 +70,14 @@ textarea {
   height: 100px;
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #000000;
+  border: 3px solid #ff0000;
   border-radius: 5px;
   resize: vertical;
   transition: border-color 0.3s ease;
+}
+
+.gravou {
+  color: black;
 }
 
 textarea:focus {
@@ -105,9 +119,14 @@ button.recording {
 
 #timer {
   display: inline-block;
-  background-color: #09afff;
+  background-color: #2f2fff;
   padding: 5px 10px;
-  border-radius: 5px;
+  color: black;
+  width: 80px;
+  font-weight: bold;
+  font-size: 19px;
+  text-align: center;
+  border-radius: 4px;
   box-shadow: 1px 1px 5px 3px black;
 }
 
@@ -123,65 +142,25 @@ button.recording {
 .saved-content > h2 {
   margin-bottom: 25px;
   margin-top: 25px;
+  color: white;
+  text-decoration: underline;
   text-align: center;
 }
 
 .text-content {
   flex: 1;
-  margin-right: 10px; /* Espaçamento entre o texto e o botão */
-  //border: 2px solid black;
-  //border-bottom: 2px solid black;
+  margin-right: 10px;
   height: 39px;
+  color: white;
+  font-size: 20px;
   border-radius: 3px;
   padding-left: 10px;
   padding-right: 10px;
-  //padding-top: 5px;
 }
 
 .delete-button {
-  margin-top: 5px; /* Espaçamento entre os botões */
+  margin-top: 5px;
 }
-
-/*.saved-content {
-  margin-top: 20px;
-  border-radius: 3px;
-}
-
-.saved-content > h3 {
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.saved-item {
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  overflow: hidden;
-  border-radius: 4px;
-  padding: 0 auto;
-  margin-bottom: 10px;
-}
-
-.text-content {
-  margin-left: 10px;
-  background: none;
-  margin-right: 10px;
-}
-
-.delete-button {
-  background-color: red;
-  color: black;
-  border: none;
-  padding: 5px 10px;
-  margin: 0 auto;
-  //margin-left: 10px;
-  float: right;
-  cursor: pointer;
-}
-
-.delete-button:hover {
-  background-color: darkred;
-}*/
 
 .language-select-container {
   position: fixed;
@@ -191,18 +170,24 @@ button.recording {
 
 .select-container {
   border-radius: 3px;
+  width: 170px;
+  height: 28px;
   border: 2px solid black;
   box-shadow: 1px 1px 3px 1px black;
+  color: black;
+  font-size: 18px;
 }
 
 .language-select select {
   padding: 5px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .escolher_idioma {
   margin-bottom: 12px;
-  //margin-right: 10px;
+  color: white;
+  font-size: 20px;
+  font-family: "Times New Roman";
 }
 
 .recording {
@@ -215,9 +200,9 @@ button.recording {
 }
 
 .button-container {
-  display: flex; /* Configura um layout de linha */
-  justify-content: space-between; /* Distribui os botões igualmente na linha */
-  margin-bottom: 10px; /* Espaçamento inferior para separar dos outros elementos */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .button-container button {

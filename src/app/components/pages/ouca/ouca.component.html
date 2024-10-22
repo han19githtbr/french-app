@@ -1,7 +1,7 @@
   <div class="container_ouco">
     <img
       class="icone_ouco"
-      src="../../../../assets/img/som.gif"
+      src="../../../../assets/img/unidade.gif"
       alt="ouvir"
     />
   </div>
@@ -36,7 +36,7 @@
   </div>
 
 
-  <h2 class="clique_ouça"><span>Passe o mouse nessas fotos</span> e ouça</h2>
+  <h2 class="clique_ouça"><span>Clique nas seguintes fotos</span> e ouça</h2>
   <div class="image-container">
 
     <div class="card" id="Courir" (click)="onImageClick('Courir')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Courir' }">
@@ -82,28 +82,3 @@
     </div>
   </div>
 
-
-
-  <h2 class="clique_ouça"><span>Escolha a descrição correta</span> para cada imagem</h2>
-
-  <div class="tentativas-control">
-    <label for="speakingSpeed">Tentativas:</label>
-    <input type="range" id="changingAttempts" name="changingAttempts" min="0" max="3" step="1" [(ngModel)]="changingAttempts" (input)="controlarTentativas(changingAttempts)">
-
-    <span>{{ changingAttempts }}</span>
-  </div>
-
-  <div class="gif-container">
-    <div class="card" *ngFor="let card of imagens" id="Plante" [attr.id]="card.description">
-      <img [src]="card.url" [alt]="card.description">
-
-      <p class="gif-clique">Escolha a legenda correta</p>
-      <div class="select">
-        <select class="select-option" [(ngModel)]="option">
-          <option *ngFor="let option of card.options" [value]="option">{{ option }}</option>
-        </select>
-        <!--<p>Palavra correta: {{ card.correctOption }}</p>-->
-        <button class="escolher" (click)="checkOption(option, card.correctOption)">OK</button>
-      </div>
-    </div>
-  </div>

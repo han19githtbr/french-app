@@ -1,9 +1,10 @@
 .container_consultation {
-  margin-top: 100px;
+  padding-top: 50px;
 }
+
 .home-container {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .home-container img {
@@ -12,9 +13,14 @@
 }
 
 .home-container h1 {
-  color: #0000ff;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 30px;
+  font-family: "Times New Roman";
 }
 
 .home-container span {
-  color: #ff0000;
+  color: #ffffff;
 }

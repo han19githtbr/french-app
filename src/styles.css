@@ -1,41 +1,44 @@
-*{
-  background-color: #ffffff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  color: black;
-  font-family: 'Times New Roman';
-  margin: 0;
+  font-family: 'Times New Roman', serif;
+  color: #5353ff;
+  bottom: 0;
 }
 
 body {
-  //overflow-y: hidden;
-  //background-image: url('assets/img/learn.jpg');
+  background-color: transparent;
+  background-image: url('../src/assets/img/stone-languages.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-attachment: fixed;
+  height: 100%;
 }
 
 .mensagem_boas_vindas {
-  margin-top: -200px;
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
   position: fixed;
   top: 50%;
-  left: -200px; /* inicialmente fora da tela à esquerda */
+  left: -200px;
+  margin-left: 10px;
+  margin-top: -200px;
+  display: flex;
+  flex-direction: column;
   transition: left 1s ease-in-out;
   z-index: 9999;
 }
+
 .aceno_gif {
-  width: 70px; /* ajuste conforme necessário */
+  width: 70px;
 }
 
 .container_consultation {
   margin-top: 40px;
   text-align: center;
   background: none;
-  top: 0;
 }
 
 .container_consultation > img {
@@ -45,91 +48,42 @@ body {
   border: 3px solid blue;
 }
 
-/* Estilo para a caixa de mensagem */
+/* Estilo para a caixa de mensagem personalizada */
 .toast-custom {
-  border: 2px solid blue; /* Adiciona uma borda azul de 1px */
-  border-radius: 4px; /* Arredonda as bordas */
-  box-shadow: 1px 1px 1px 1px azul; /* Remove a sombra padrão */
-  background-color: #eaf2ff; /* Define a cor de fundo como branca */
+  border: 2px solid blue;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 255, 0.5);
+  background-color: #eaf2ff;
+  padding: 10px;
 }
 
 .toast-custom .toast-message {
-  background-color: #eaf2ff; /* Define a cor de fundo como azul claro */
+  background-color: #eaf2ff;
   padding: 4px;
-}
-
-.toast-message {
   color: #0080c0;
 }
 
 .toast-custom .toast-title {
-  padding: 4px; /* Adiciona um preenchimento de 4px */
   color: #0bafff;
-}
-
-/* Estilo para o botão de fechar */
-.toast-custom .toast-close-button {
-  color: red; /* Define a cor do ícone do botão de fechar como vermelho */
-  background-color: transparent !important; /* Remove a cor de fundo do botão */
-  border: none; /* Remove a borda do botão */
-  font-size: 16px; /* Define o tamanho da fonte */
-  line-height: 1; /* Define a altura da linha */
-  padding: 0; /* Remove o preenchimento interno */
-  margin: 0; /* Remove a margem */
-}
-
-/* Estilo para o ícone do botão de fechar */
-.toast-custom .toast-close-button::before {
-  font-size: 16px; /* Define o tamanho do ícone */
-}
-
-.toast-custom .toast-progress {
-  margin-top: 5px; /* Espaçamento entre a barra de progresso e o texto */
-}
-
-.toast-custom {
-  animation: slideInRight 0.5s, slideOutRight 0.5s 3.5s; /* Animação de entrada e saída */
-}
-
-.toast-error {
-  animation: slideInRight 0.5s, slideOutRight 0.5s 3.5s;
-}
-
-.toast-error .toast-message {
-  color: #e60000; /* Define a cor de fundo como azul claro */
   padding: 4px;
 }
 
-.toast-error .toast-title {
-  padding: 4px; /* Adiciona um preenchimento de 4px */
-  color: #e60000;
-}
-
-/* Estilo para o botão de fechar */
-.toast-error .toast-close-button {
-  color: red; /* Define a cor do ícone do botão de fechar como vermelho */
-  background-color: transparent !important; /* Remove a cor de fundo do botão */
-  border: none; /* Remove a borda do botão */
-  font-size: 16px; /* Define o tamanho da fonte */
-  line-height: 1; /* Define a altura da linha */
-  padding: 0; /* Remove o preenchimento interno */
-  margin: 0; /* Remove a margem */
-}
-
-/* Estilo para o ícone do botão de fechar */
-.toast-error .toast-close-button::before {
-  font-size: 16px; /* Define o tamanho do ícone */
-}
-
-.toast-error .toast-progress {
-  margin-top: 5px; /* Espaçamento entre a barra de progresso e o texto */
+.toast-custom .toast-close-button {
+  color: red;
+  background-color: transparent !important;
+  border: none;
+  font-size: 16px;
 }
 
 .toast-error {
-  border: 2px solid green; /* Adiciona uma borda azul de 1px */
-  border-radius: 4px; /* Arredonda as bordas */
-  box-shadow: 1px 1px 1px 1px azul; /* Remove a sombra padrão */
-  background-color: #8de2ad; /* Define a cor de fundo como branca */
+  border: 2px solid green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+  background-color: #8de2ad;
+}
+
+.toast-error .toast-message {
+  color: #e60000;
 }
 
 @keyframes slideInRight {
@@ -151,10 +105,19 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
-  .container_gravar > img {
+  .container_consultation > img {
     width: 110px;
-    border-radius: 50%;
   }
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+
 @import "../node_modules/ngx-toastr/toastr.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

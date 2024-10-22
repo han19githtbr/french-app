@@ -14,13 +14,21 @@
   text-align: center;
 }
 
+.icon {
+  color: white;
+}
+
 .title {
-  margin-top: -5rem;
+  margin-top: 6rem;
   text-align: center;
-  color: #0000ff;
+  color: #ffffff;
+  font-weight: lighter;
+  font-size: 30px;
 }
 
 .title span {
+  font-weight: lighter;
+  font-size: 30px;
   color: #ff0000;
 }
 
@@ -147,11 +155,13 @@
   text-align: center;
   margin-top: 150px;
   color: #ff0000;
+  font-size: 26px;
   margin-bottom: 70px;
 }
 
 .clique_ouça span {
-  color: #0000ff;
+  color: #fdfdff;
+  font-size: 26px;
 }
 
 .speed-control {
@@ -174,8 +184,9 @@
 }
 
 .speed-control label {
+  font-size: 22px;
   margin-right: 10px;
-  color: #0000ff;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -184,8 +195,10 @@
   background: none;
   font-weight: bold;
   font-size: 22px;
+  bottom: -18px;
   text-align: center;
   left: 0;
+  color: white;
 }
 
 .listen-button {
@@ -277,4 +290,3 @@
     margin-bottom: 10px;
   }
 }
-

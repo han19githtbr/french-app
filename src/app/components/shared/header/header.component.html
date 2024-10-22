@@ -2,33 +2,21 @@
   <ul class="nav-header-links">
     <li class="nav-header-itens">
       <a [routerLink]="['/']" (mouseover)="showLabel('home')">
-        <img
-          class="icone_home"
-          src="../../../../assets/img/casa.png"
-          alt="home"
-        />
+        <mat-icon class="icon">home</mat-icon>
       </a>
       <div class="icon-label" *ngIf="showHomeLabel">Home</div>
     </li>
     <li class="nav-header-itens">
       <a [routerLink]="['/ouca']" routerLinkActive="active" (mouseover)="showLabel('ouvir')">
-        <img
-          class="icone_orelha"
-          src="../../../../assets/img/simbolo-volume.png"
-          alt="orelha"
-        />
+        <mat-icon class="icon">hearing</mat-icon>
       </a>
-      <div class="icon-label" *ngIf="showOuvirLabel">Ouvir</div>
+      <div class="icon-label" *ngIf="showOuvirLabel">Listen</div>
     </li>
     <li class="nav-header-itens">
       <a [routerLink]="['/fale']" routerLinkActive="active" (mouseover)="showLabel('falar')">
-        <img
-          class="icone_falar"
-          src="../../../../assets/img/microfone.png"
-          alt="falar"
-        />
+        <mat-icon class="icon">record_voice_over</mat-icon>
       </a>
-      <div class="icon-label" *ngIf="showFalarLabel">Falar</div>
+      <div class="icon-label" *ngIf="showFalarLabel">Speak</div>
       <i class="fa-solid fa-microphone"></i>
     </li>
 
@@ -42,7 +30,7 @@
     </li>
   </ul>
 
-  
+
   <!-- Lista de notificações -->
   <ul *ngIf="showNotifications" class="notification-list">
     <li *ngFor="let notification of notifications">{{ notification }}</li>

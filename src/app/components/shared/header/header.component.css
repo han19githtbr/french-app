@@ -1,11 +1,17 @@
 .nav-header-container {
   display: flex;
   width: 100%;
-  border-bottom: 2px solid black;
+  //border-bottom: 3px dotted white;
   height: 100px;
   text-align: right;
   justify-content: right;
   align-items: right;
+  position: fixed;
+  top: 0px;
+}
+
+.icon {
+  color: white;
 }
 
 .nav-header-links {
@@ -41,7 +47,7 @@
   text-align: center;
   margin-top: 5px;
   font-size: 15px;
-  color: black;
+  color: white;
   font-weight: bold;
 }
 
