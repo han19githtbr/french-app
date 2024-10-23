@@ -6,12 +6,14 @@
       </a>
       <div class="icon-label" *ngIf="showHomeLabel">Home</div>
     </li>
+
     <li class="nav-header-itens">
       <a [routerLink]="['/ouca']" routerLinkActive="active" (mouseover)="showLabel('ouvir')">
         <mat-icon class="icon">hearing</mat-icon>
       </a>
       <div class="icon-label" *ngIf="showOuvirLabel">Listen</div>
     </li>
+
     <li class="nav-header-itens">
       <a [routerLink]="['/fale']" routerLinkActive="active" (mouseover)="showLabel('falar')">
         <mat-icon class="icon">record_voice_over</mat-icon>
@@ -19,7 +21,6 @@
       <div class="icon-label" *ngIf="showFalarLabel">Speak</div>
       <i class="fa-solid fa-microphone"></i>
     </li>
-
   </ul>
 
   <ul class="nav-header-links ml-auto">
@@ -30,11 +31,9 @@
     </li>
   </ul>
 
-
   <!-- Lista de notificações -->
   <ul *ngIf="showNotifications" class="notification-list">
     <li *ngFor="let notification of notifications">{{ notification }}</li>
     <li *ngIf="notifications.length === 0">Sem notificações</li>
   </ul>
-
 </nav>

@@ -1,7 +1,6 @@
 .nav-header-container {
   display: flex;
   width: 100%;
-  //border-bottom: 3px dotted white;
   height: 100px;
   text-align: right;
   justify-content: right;
@@ -12,6 +11,11 @@
 
 .icon {
   color: white;
+}
+
+.icon:hover {
+  color: #2bcd0e;
+  transition: 0.6s;
 }
 
 .nav-header-links {
@@ -25,65 +29,16 @@
   margin-right: 15px;
 }
 
-.icone_falar {
-  width: 40px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.icone_home {
-  width: 40px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.icone_orelha {
-  width: 40px;
-  height: 30px;
-  border-radius: 50%;
-}
-
 .icon-label {
   text-align: center;
   margin-top: 5px;
-  font-size: 15px;
+  font-size: 22px;
   color: white;
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 .nav-header-itens a:hover {
   color: blue;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  //margin-left: 10px; /* Mova a barra de busca para a direita */
-  //margin-bottom: 10px;
-  //margin-right: 20px; /* Espaço à direita para separar dos outros itens */
-}
-
-.search-container input[type="text"] {
-  padding: 5px;
-  font-size: 16px;
-  border: 1px solid black;
-  border-radius: 3px;
-}
-
-.search-container button {
-  padding: 5px 10px;
-  font-size: 16px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: #0080c0;
-  color: black;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.search-container button:hover {
-  background-color: #1a1aff;
-  border-radius: 6px;
 }
 
 @media screen and (max-width: 768px) {

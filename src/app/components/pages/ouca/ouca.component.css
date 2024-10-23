@@ -28,7 +28,7 @@
 
 .title span {
   font-weight: lighter;
-  font-size: 30px;
+  font-size: 35px;
   color: #ff0000;
 }
 
@@ -155,13 +155,15 @@
   text-align: center;
   margin-top: 150px;
   color: #ff0000;
-  font-size: 26px;
+  font-size: 30px;
+  font-weight: lighter;
   margin-bottom: 70px;
 }
 
 .clique_ouça span {
   color: #fdfdff;
-  font-size: 26px;
+  font-weight: lighter;
+  font-size: 32px;
 }
 
 .speed-control {
@@ -226,10 +228,6 @@
   margin-top: 200px;
 }
 
-#speakingSpeed {
-  color: black;
-}
-
 .select-frances {
   color: black;
   box-shadow: 0.05px 0.5px 3px 1px black;
@@ -260,14 +258,18 @@
   }
 
   .select{
-    //border: 2px solid black;
+    border: 2px solid black;
     border-radius: 6px;
   }
 
-  .select-frances {
-    color: black;
+  .select-language {
     box-shadow: 0.05px 0.5px 3px 1px black;
   }
+
+  .select-language:hover {
+    cursor: pointer;
+  }
+
   .select{
     border: none;
     margin-top: 10px;
