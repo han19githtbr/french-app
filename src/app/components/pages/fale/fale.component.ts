@@ -19,10 +19,6 @@ export class FaleComponent implements OnInit {
   constructor(private toastr: ToastrService) {}
 
 
-  /*showAudioNotification() {
-    this.headerComponent.addNotification('Você gravou um áudio.'); // Adicionar notificação ao cabeçalho
-  }*/
-
   ngOnInit() {
     const savedContents = localStorage.getItem('savedContents');
 
@@ -173,6 +169,9 @@ export class FaleComponent implements OnInit {
     const index = this.savedContents.indexOf(content);
     if (index !== -1) {
       this.savedContents.splice(index, 1);
+
+      // *** ADICIONADO: Atualiza o localStorage após a deleção ***
+      localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
 
       this.toastr.success('Conteúdo removido com sucesso', 'Remoção concluída', {
         toastClass: 'toast-custom',

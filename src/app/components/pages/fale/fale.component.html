@@ -15,11 +15,10 @@
 
     <div class="button-container">
       <button (click)="saveContent()" [disabled]="content.trim() === ''">Salvar Texto</button>
-      <button (click)="playText()" [disabled]="content.trim() === ''">Reproduzir Texto</button> <!-- Novo botão -->
+      <button (click)="playText()" [disabled]="content.trim() === ''">Reproduzir Texto</button>
     </div>
 
     <div *ngIf="content.trim() === ''" class="error-message">
-
       Sem conteúdo para reproduzir.
     </div>
 
