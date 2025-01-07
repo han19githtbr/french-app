@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-//import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-fale',
@@ -140,8 +139,6 @@ export class FaleComponent implements OnInit {
       this.savedContents.push(this.content.trim());
       this.content = '';
 
-      //this.headerComponent.addNotification('Você salvou um texto.');
-
       localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
 
       this.toastr.success('Texto salvo com sucesso', 'Gravação concluída', {
@@ -228,71 +225,6 @@ export class FaleComponent implements OnInit {
     utterance.lang = languageCode;
 
     window.speechSynthesis.speak(utterance);
-  }
-
-
-  downloadTextAsAudio() {
-    const textToSpeak = this.content.trim();
-
-    if (!textToSpeak) {
-      alert('Sem conteúdo para converter em áudio.');
-      return;
-    }
-
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-
-    // Configurar o idioma, voz, etc. conforme necessário
-    utterance.lang = this.selectedLanguage;
-
-    // Iniciar a síntese de fala
-    synth.speak(utterance);
-
-    // Lidar com o evento de finalização da síntese de fala
-    utterance.onend = () => {
-      const audioContext = new AudioContext();
-      const audioStream = new MediaStream();
-      const audioSource = audioContext.createMediaStreamSource(audioStream);
-      const recorder = new MediaRecorder(audioStream);
-      const chunks: Blob[] = [];
-
-      recorder.ondataavailable = (e) => {
-        chunks.push(e.data);
-      };
-
-      recorder.onstop = () => {
-        const blob = new Blob(chunks, { type: 'audio/mpeg' });
-
-        // Criar um link para download do arquivo de áudio
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'texto_convertido.mp3';
-        document.body.appendChild(a);
-
-        // Simular um clique no link para iniciar o download
-        a.click();
-
-        // Remover o link do DOM
-        document.body.removeChild(a);
-
-        // Revogar o URL do objeto
-        window.URL.revokeObjectURL(url);
-      };
-
-      // Iniciar a gravação do buffer de áudio
-      recorder.start();
-
-      // Capturar a saída de áudio do contexto de áudio da síntese de fala
-      const destination = audioContext.createMediaStreamDestination();
-      audioSource.connect(destination);
-      destination.stream.getAudioTracks().forEach(track => audioStream.addTrack(track));
-
-      // Parar a síntese de fala após um breve atraso para garantir que a gravação comece
-      setTimeout(() => {
-        synth.cancel();
-      }, 500);
-    };
   }
 
 }

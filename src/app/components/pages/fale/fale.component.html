@@ -26,7 +26,7 @@
       <h2>Conteúdo Salvo</h2>
       <div *ngFor="let savedContent of savedContents" class="saved-item">
         <div class="text-content">{{ savedContent }}</div>
-        <button class="delete-button" (click)="deleteContent(savedContent)">Apagar</button>
+        <button class="delete-button" (click)="deleteContent(savedContent)" (touchstart)="deleteContent(savedContent)" (touchend)="$event.preventDefault()">Apagar</button>
       </div>
     </div>
 

@@ -9,7 +9,7 @@ export class TranslationService {
   speakWord(word: string, language: string, speakingSpeed: number): void {
     const utterance = new SpeechSynthesisUtterance(word);
     utterance.lang = language;
-    utterance.rate = speakingSpeed; // Define a velocidade da fala
+    utterance.rate = speakingSpeed;
     speechSynthesis.speak(utterance);
   }
 
