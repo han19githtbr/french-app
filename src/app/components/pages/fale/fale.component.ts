@@ -163,10 +163,10 @@ export class FaleComponent implements OnInit {
   }
 
   deleteContent(content: string) {
+    console.log("deleteContent chamado para:", content);
     const index = this.savedContents.indexOf(content);
     if (index !== -1) {
       this.savedContents.splice(index, 1);
-
       // *** ADICIONADO: Atualiza o localStorage após a deleção ***
       localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
 
@@ -178,7 +178,6 @@ export class FaleComponent implements OnInit {
         positionClass: 'toast-bottom-right', // Posição do toast
         tapToDismiss: false
       });
-
     }
   }
 
