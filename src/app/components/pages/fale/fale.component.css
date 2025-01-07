@@ -160,6 +160,7 @@ button.recording {
 
 .delete-button {
   margin-top: 5px;
+  cursor: pointer;
 }
 
 .language-select-container {
