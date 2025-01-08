@@ -1,0 +1,87 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.login-container img {
+  margin-top: -300px;
+  width: 300px;
+}
+
+.login-container h2 {
+  margin-top: -100px;
+  color: white;
+  margin-bottom: 80px;
+}
+
+.login-container p {
+  color: #ffffff;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+button p {
+  padding-top: 30px;
+}
+
+.loading-overlay .mat-spinner { /* Alvo no spinner dentro do overlay */
+  width: 30px; /* Ajuste o tamanho */
+  height: 30px;
+}
+
+.loading-overlay .mat-spinner circle { /* Alvo no círculo do spinner */
+  stroke: #a8d1ff; /* Cor azul (exemplo) */
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center; /* Centraliza os cartões */
+  margin: 0 auto;
+  margin-top: -220px; /* Espaçamento acima dos cartões */
+  width: 100%; /* Garante que os cartões ocupem a largura disponível */
+  max-width: 800px; /* Largura máxima para evitar que os cartões fiquem muito grandes em telas largas */
+}
+
+.card {
+  margin: 0 30px; /* Espaçamento entre os cartões */
+  flex: 1; /* Distribui o espaço igualmente entre os cartões */
+  text-align: center;
+}
+
+.card img {
+  object-fit: cover;
+  height: 200px;
+}
+
+mat-card-content p {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+      flex-direction: column; /* Empilha os cartões verticalmente */
+      align-items: center; /* Centraliza os cartões */
+  }
+  .card {
+      margin: 10px 0; /* Espaçamento vertical entre os cartões */
+      width: 90%;
+  }
+}

@@ -41,6 +41,55 @@
   color: blue;
 }
 
+.user-status {
+  display: flex;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-top: -8px;
+  position: relative;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.user-name {
+  color: white;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.logout-menu {
+  margin-top: 10px;
+  background: #333;
+  border-radius: 4px;
+  padding: 5px 10px;
+  position: absolute;
+  top: 70px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+.logout-button {
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button mat-icon {
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .nav-header-links {
     justify-content: center;

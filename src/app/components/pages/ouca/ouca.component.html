@@ -37,41 +37,19 @@
   </div>
 
 
-  <h2 class="clique_ouça"><span>Clique nas seguintes fotos</span> e ouça</h2>
+  <h2 class="clique_ouça"><span>Clique nas seguintes imagens</span> e ouça</h2>
+
+  <div class="no-images" *ngIf="currentIndex < 0">Clique em "Gerar Nova Imagem" para começar.</div>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="showNextImage()">Gerar Nova Imagem</button>
+    <button mat-raised-button color="accent" [disabled]="!previousImage" (click)="showPreviousImage()">Revisar Imagem Anterior</button>
+  </div>
+
   <div class="image-container">
-
-    <div class="card" id="Courir" (click)="onImageClick('Courir')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Courir' }">
-      <img src="../../../assets/img/correr.jpg" alt="Courir">
-      <div class="spoken-word" *ngIf="spokenWord === 'Courir'">{{ spokenWord }}</div>
-    </div>
-
-    <div class="card" id="Marcher" (click)="onImageClick('Marcher')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Marcher' }">
-      <img src="../../../assets/img/caminhar.jpg" alt="Caminhar">
-      <div class="spoken-word" *ngIf="spokenWord === 'Marcher'">{{ spokenWord }}</div>
-    </div>
-
-    <div class="card" id="Cuisiner" (click)="onImageClick('Cuisiner')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Cuisiner' }">
-      <img src="../../../assets/img/cozinhar.jpg" alt="Cozinhar">
-      <div class="spoken-word" *ngIf="spokenWord === 'Cuisiner'">{{ spokenWord }}</div>
-    </div>
-
-    <div class="card" id="Piloter" (click)="onImageClick('Piloter')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Piloter' }">
-      <img src="../../../assets/img/dirigir.jpg" alt="Dirigir">
-      <div class="spoken-word" *ngIf="spokenWord === 'Piloter'">{{ spokenWord }}</div>
-    </div>
-
-    <div class="card" id="Nature" (click)="onImageClick('La nature')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Nature' }">
-      <img src="../../../assets/img/jour.jpg" alt="Jour">
-      <div class="spoken-word" *ngIf="spokenWord === 'La nature'">{{ spokenWord }}</div>
-    </div>
-
-    <div class="card" id="Soleil" (click)="onImageClick('Le coucher du soleil')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Soleil' }">
-      <img src="../../../assets/img/coucher.jpg" alt="Coucher">
-      <div class="spoken-word" *ngIf="spokenWord === 'Le coucher du soleil'">{{ spokenWord }}</div>
-    </div>
-
-    <div class="card" id="Maison" (click)="onImageClick('Une maison')" [ngClass]="{ 'blink': imageFound && spokenWord === 'Maison' }">
-      <img src="../../../assets/img/maison.jpg" alt="Maison">
-      <div class="spoken-word" *ngIf="spokenWord === 'Une maison'">{{ spokenWord }}</div>
+    <div class="card" *ngIf="currentIndex >= 0 && currentIndex < images.length" [ngClass]="{ blink: images[currentIndex].description === spokenWord }">
+      <img src="{{ images[currentIndex].url }}" alt="{{ images[currentIndex].description }}">
+      <div class="spoken-word" *ngIf="spokenWord === images[currentIndex].description">{{ spokenWord }}</div>
     </div>
   </div>
+

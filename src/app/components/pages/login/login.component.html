@@ -1,0 +1,28 @@
+<div class="login-container">
+  <img src="/assets/img/logo_frances.png" alt="Logo" class="logo">
+  <h2>A sua oportunidade de aprender Francês</h2>
+  <p>Clique no botão abaixo para fazer login</p>
+
+  <button mat-raised-button color="primary" (click)="login()" [disabled]="isLoading">
+      <mat-icon>login</mat-icon>
+      <p *ngIf="!isLoading">Entrar com Google</p> <span *ngIf="isLoading" class="loader"></span>
+  </button>
+
+  <div *ngIf="isLoading" class="loading-overlay"> <mat-spinner></mat-spinner> </div>
+</div>
+
+<div class="cards-container">
+  <mat-card class="card">
+      <img mat-card-image src="/assets/img/ouvir_frances.png" alt="Pessoas ouvindo francês">
+      <mat-card-content>
+          <p>Aprimore sua compreensão auditiva com a nossa técnica</p>
+      </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+      <img mat-card-image src="/assets/img/falar_frances.jpg" alt="Pessoas falando francês">
+      <mat-card-content>
+          <p>Saiba falar e escrever em Francês</p>
+      </mat-card-content>
+  </mat-card>
+</div>

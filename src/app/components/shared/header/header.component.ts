@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,15 +15,25 @@ export class HeaderComponent {
   notificationCount: number = 0;
   showNotifications: boolean = false;
   notifications: string[] = [];
+  showLogoutMenu: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
+
+  toggleLogoutMenu() {
+    this.showLogoutMenu = !this.showLogoutMenu;
+  }
 
   toggleNotifications() {
     this.showNotifications = !this.showNotifications;
     if (this.showNotifications) {
       this.notificationCount = 0;
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.showLogoutMenu = false;
   }
 
   addNotification(message: string) {

@@ -151,6 +151,53 @@
   transform: scale(1.07);
 }
 
+.button-container {
+  display: flex;
+  justify-content: center; /* Centraliza os botões horizontalmente */
+  gap: 10px; /* Espaçamento entre os botões */
+  margin-bottom: 20px; /* Espaçamento abaixo dos botões */
+}
+
+/* Estilo específico para o botão "accent" */
+.button-container button[color="accent"]:hover {
+  background-color: #8e0d26; /* Cor de fundo no hover para o botão accent */
+}
+
+/* Estilo específico para o botão "accent" */
+.button-container button[color="primary"]:hover {
+  background-color: #0080c0; /* Cor de fundo no hover para o botão accent */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center; /* Centraliza a imagem horizontalmente */
+  margin-bottom: 20px;
+}
+
+.card {
+  text-align: center; /* Centraliza o texto dentro do card */
+  max-width: 400px; /* Largura máxima da imagem */
+  margin: 0 auto; /* Centraliza o card horizontalmente */
+}
+
+.card img {
+  max-width: 100%; /* A imagem não ultrapassa a largura do card */
+  height: auto; /* Mantém a proporção da imagem */
+  display: block; /* Evita espaços extras abaixo da imagem */
+  margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+}
+
+.spoken-word {
+  text-align: center;
+}
+
+.no-images {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: white;
+}
+
 .clique_ouça {
   text-align: center;
   margin-top: 150px;

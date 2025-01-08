@@ -1,4 +1,4 @@
-<nav class="nav-header-container">
+<nav class="nav-header-container" *ngIf="authService.isLoggedIn">
   <ul class="nav-header-links">
     <li class="nav-header-itens">
       <a [routerLink]="['/']" (mouseover)="showLabel('home')">
@@ -19,21 +19,34 @@
         <mat-icon class="icon">record_voice_over</mat-icon>
       </a>
       <div class="icon-label" *ngIf="showFalarLabel">Speak</div>
-      <i class="fa-solid fa-microphone"></i>
+      <!--<i class="fa-solid fa-microphone"></i>-->
     </li>
   </ul>
 
-  <ul class="nav-header-links ml-auto">
+  <!--<ul class="nav-header-links ml-auto">
     <li class="nav-header-itens dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="fas fa-bars"></i>
       </a>
     </li>
-  </ul>
+  </ul>-->
 
-  <!-- Lista de notificações -->
-  <ul *ngIf="showNotifications" class="notification-list">
-    <li *ngFor="let notification of notifications">{{ notification }}</li>
-    <li *ngIf="notifications.length === 0">Sem notificações</li>
-  </ul>
+  <!-- Status de login -->
+  <div class="user-status" *ngIf="authService.isLoggedIn">
+    <span>{{ authService.userInfo['name'] }}</span>
+    <img
+      [src]="authService.userInfo['picture']"
+      alt="Profile Picture"
+      class="user-photo"
+      (click)="toggleLogoutMenu()"
+    />
+
+    <!-- Menu de logout que aparece ao clicar na foto de perfil -->
+    <div *ngIf="showLogoutMenu" class="logout-menu">
+      <button mat-button (click)="logout()" class="logout-button">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </div>
+  </div>
 </nav>

@@ -17,6 +17,8 @@ export class OucaComponent implements OnInit {
   changingAttempts: number = 3;
   spokenWord: string = '';
   imageFound: boolean = false;
+  currentIndex: number = -1;
+  previousImage: boolean = false;
 
   images: { description: string, url: string }[] = [
     { description: 'Courir', url: '../../../assets/img/correr.jpg' },
@@ -30,92 +32,58 @@ export class OucaComponent implements OnInit {
   ];
 
 
-  checkOption(option: string, correctOption: string): void {
-
-    if (option === correctOption) {
-      this.toastr.success('Você acertou a legenda', 'Parabéns', {
-        toastClass: 'toast-custom',
-        progressBar: true,
-        closeButton: true,
-        timeOut: 3000,
-        positionClass: 'toast-bottom-right',
-        tapToDismiss: false
-      });
-      this.translationService.speakWord('Parabéns! Você acertou a legenda', 'pt', this.speakingSpeed);
-    } else {
-      this.toastr.error('Errou a legenda!', 'Errou', {
-        toastClass: 'toast-error',
-        progressBar: true,
-        closeButton: true,
-        timeOut: 3000,
-        positionClass: 'toast-bottom-right',
-        tapToDismiss: false
-      });
-      this.translationService.speakWord('Errou a legenda! Tente novamente', 'pt', this.speakingSpeed);
-      this.changingAttempts--;
-      if (this.changingAttempts === 0) {
-        this.toastr.error('Número de tentativas esgotadas!', 'Fim de jogo', {
-          toastClass: 'toast-error',
-          progressBar: true,
-          closeButton: true,
-          timeOut: 3000,
-          positionClass: 'toast-bottom-right',
-          tapToDismiss: false
-        });
-        this.translationService.speakWord('Número de tentativas esgotadas! Fim de Jogo', 'pt', this.speakingSpeed);
-        this.changingAttempts = 3;
-
-      }
-    }
-  }
-
-
   constructor(private translationService: TranslationService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.searchKeyword = params['q'] || '';
-      if (this.searchKeyword) {
-        this.search(this.searchKeyword);
-      }
-    });
+
   }
 
 
-  search(keyword: string): void {
-    const lowercaseKeyword = keyword.toLowerCase();
-    const image = this.images.find(img => img.description.toLowerCase().includes(lowercaseKeyword));
-    if (image) {
-      this.applyBlinkEffect(true);
-      const element = document.getElementById(image.description);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  trackByImage(index: number, image: { description: string, url: string }): string {
+    return image.description;
+  }
+
+
+  showNextImage(): void {
+    this.currentIndex++;
+    this.spokenWord = ''; // Limpa a palavra falada ao mudar a imagem
+    this.showImage(this.currentIndex);
+  }
+
+  showPreviousImage(): void {
+    this.currentIndex--;
+    this.showImage(this.currentIndex);
+  }
+
+
+  showImage(index: number): void {
+    if (index >= 0 && index < this.images.length) {
+        this.previousImage = index > 0;
+        this.speakDescription(this.images[index].description);
+        this.spokenWord = this.images[index].description; // Exibe a palavra falada imediatamente
+        setTimeout(() => {
+            this.spokenWord = ''; // Limpa após 6 segundos
+        }, 6000);
     } else {
-      this.applyBlinkEffect(false);
+        if (index >= this.images.length) {
+            this.currentIndex = this.images.length -1;
+            this.toastr.info("Você chegou ao final das imagens.", "Informação")
+        }
+         if (index < 0) {
+            this.currentIndex = 0;
+            this.toastr.info("Você está na primeira imagem.", "Informação")
+        }
     }
-  }
-
-  // Função para aplicar ou remover a classe .blink com base na pesquisa
-  applyBlinkEffect(found: boolean): void {
-    this.imageFound = found;
-  }
-
-  speakWord(): void {
-    this.translationService.speakWord(this.word, this.language, this.speakingSpeed);
   }
 
   speakDescription(description: string): void {
     this.translationService.speakWord(description, this.language, this.speakingSpeed);
-    this.spokenWord = description;
   }
 
-  speakDescriptionVideo(description: string, audioUrl: string, delay: number): void {
-    setTimeout(() => {
-      this.playAudio(audioUrl);
-      this.spokenWord = description;
-    }, delay * 1000);
+
+  speakWord(): void {
+    this.translationService.speakWord(this.word, this.language, this.speakingSpeed);
   }
 
   playAudio(audioUrl: string): void {
@@ -138,7 +106,4 @@ export class OucaComponent implements OnInit {
     }
   }
 
-  controlarTentativas(value: number): void {
-    this.changingAttempts = value;
-  }
 }
