@@ -14,11 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './components/pages/home/home.component';
-import { AuthGuard } from './components/guards/auth.guard';
 import { MatIconModule } from '@angular/material/icon';
-import { LoginComponent } from './components/pages/login/login.component';
-import { OAuthModule } from 'angular-oauth2-oidc';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
     OucaComponent,
     FaleComponent,
     HomeComponent,
-    LoginComponent,
     HeaderComponent,
     FooterComponent
   ],
@@ -40,14 +35,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       toastClass: 'toast-custom' // Define a classe de posição
     }),
-    OAuthModule.forRoot()
+
   ],
-  providers: [TranslationService, AuthGuard],
+  providers: [TranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

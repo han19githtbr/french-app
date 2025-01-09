@@ -6,7 +6,10 @@
   justify-content: right;
   align-items: right;
   position: fixed;
-  top: 0px;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
 }
 
 .icon {
@@ -41,64 +44,62 @@
   color: blue;
 }
 
-.user-status {
-  display: flex;
-  margin-right: 10px;
-  margin-left: 20px;
-  margin-top: -8px;
-  position: relative;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-photo {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+.menu-toggle {
+  display: none; /* Oculta o ícone em telas maiores */
   cursor: pointer;
-}
-
-.user-name {
   color: white;
-  margin-top: 5px;
-  font-size: 16px;
-}
-
-.logout-menu {
-  margin-top: 10px;
-  background: #333;
-  border-radius: 4px;
-  padding: 5px 10px;
+  font-size: 2em;
   position: absolute;
-  top: 70px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
+  top: 20px;
+  left: 20px;
+  z-index: 101; /* Garante que o ícone fique acima do menu */
 }
 
-.logout-button {
-  color: white;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.logout-button mat-icon {
-  margin-right: 5px;
-}
 
 @media screen and (max-width: 768px) {
   .nav-header-links {
+    display: none; /* Inicialmente oculto */
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    position: relative;
   }
 
   .nav-header-itens {
-    margin-right: 0;
+    margin: 0 15px; /* Espaçamento horizontal entre os itens */
+  }
+
+  .nav-header-container {
+    flex-direction: column;
+    align-items: flex-start; /* Alinha o menu toggle à esquerda */
+    height: auto;
+    padding-bottom: 0;
+    background-color: transparent; /* Remove o fundo preto do container */
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Aplica o fundo preto SOMENTE ao .nav-header-links quando .show-menu está presente */
+  .nav-header-links.show-menu {
+    display: flex; /* Exibe o menu */
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+
+  /* Remove a classe que adicionava fundo preto extra */
+  .nav-header-container.show-menu {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  main {
+    padding-top: 160px; /* Ajuste o padding-top para a nova altura do cabeçalho */
   }
 }
+
 
 @media screen and (max-width: 1200px) {
   .nav-header-links {

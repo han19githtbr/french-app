@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import { Component } from '@angular/core';
+//import { Router } from '@angular/router';
+//import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +15,20 @@ export class HeaderComponent {
   notificationCount: number = 0;
   showNotifications: boolean = false;
   notifications: string[] = [];
+  isMenuOpen = false;
   showLogoutMenu: boolean = false;
 
-  constructor(private router: Router, public authService: AuthService) { }
+  constructor() { }
 
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.showLogoutMenu = false;
+  }
 
   toggleLogoutMenu() {
     this.showLogoutMenu = !this.showLogoutMenu;
@@ -32,7 +42,7 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.authService.logout();
+    //this.authService.logout();
     this.showLogoutMenu = false;
   }
 
