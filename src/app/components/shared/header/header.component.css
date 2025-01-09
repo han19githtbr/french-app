@@ -89,7 +89,6 @@
     background-color: rgba(0, 0, 0, 0.8);
   }
 
-
   /* Remove a classe que adicionava fundo preto extra */
   .nav-header-container.show-menu {
     background-color: rgba(0, 0, 0, 0.8) !important;
@@ -100,9 +99,9 @@
   }
 }
 
-
 @media screen and (max-width: 1200px) {
   .nav-header-links {
     justify-content: center;
   }
+
 }

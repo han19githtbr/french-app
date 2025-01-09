@@ -158,20 +158,25 @@
   margin-bottom: 20px; /* Espaçamento abaixo dos botões */
 }
 
+.button-container button {
+  width: 250px;
+  border: 2px solid #0000ff;
+}
+
 /* Estilo específico para o botão "accent" */
 .button-container button[color="accent"]:hover {
   background-color: #8e0d26; /* Cor de fundo no hover para o botão accent */
 }
 
 /* Estilo específico para o botão "accent" */
-.button-container button[color="primary"]:hover {
-  background-color: #0080c0; /* Cor de fundo no hover para o botão accent */
+.button-container button[color="white"]:hover {
+  background-color:rgb(255, 255, 255); /* Cor de fundo no hover para o botão accent */
 }
 
 .image-container {
   display: flex;
   justify-content: center; /* Centraliza a imagem horizontalmente */
-  margin-bottom: 20px;
+  padding-bottom: 60px;
 }
 
 .card {
@@ -338,4 +343,10 @@
   .translate-container button {
     margin-bottom: 10px;
   }
+
+  .button-container button {
+    width: 220px;
+    border: 2px solid #0000ff;
+  }
+
 }
