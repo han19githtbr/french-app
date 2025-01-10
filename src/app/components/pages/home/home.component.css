@@ -21,6 +21,15 @@
   font-family: "Times New Roman";
 }
 
+.home-container p {
+  color: #9dceff;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 25px;
+  font-family: "Times New Roman";
+}
+
 .home-container span {
   color: #ffffff;
 }
