@@ -14,6 +14,8 @@ export class FaleComponent implements OnInit {
   recognition: any; // Referência ao reconhecimento de fala
   savedContents: string[] = []; // Array para armazenar o conteúdo salvo
   selectedLanguage: string = 'fr-FR'; // Idioma padrão para gravação
+  showDeleteMessage: boolean = false;
+  maxSavedContents: number = 10;
 
   constructor(private toastr: ToastrService) {}
 
@@ -24,6 +26,29 @@ export class FaleComponent implements OnInit {
     if (savedContents) {
       this.savedContents = JSON.parse(savedContents);
     }
+  }
+
+  loadSavedContents() {
+    const savedContents = localStorage.getItem('savedContents');
+    if(savedContents) {
+      try {
+        this.savedContents = JSON.parse(savedContents);
+        if(this.savedContents.length > this.maxSavedContents) {
+          this.savedContents = this.savedContents.slice(0, this.maxSavedContents);
+          this.saveToLocalStorage();
+        }
+      } catch (error) {
+        console.error("Erro ao analisar o localStorage:", error);
+        localStorage.removeItem('savedContents');
+        this.savedContents = [];
+      }
+    } else {
+      this.savedContents = [];
+    }
+  }
+
+  saveToLocalStorage() {
+    localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
   }
 
   toggleRecording() {
@@ -90,7 +115,7 @@ export class FaleComponent implements OnInit {
         this.toastr.error('Nenhum conteúdo gravado. Grave novamente!', 'Erro de gravação', {
           toastClass: 'toast-error',
           progressBar: true,
-          closeButton: true,
+          closeButton: false,
           timeOut: 3000, // 3000 milissegundos = 3 segundos
           positionClass: 'toast-bottom-right', // Posição do toast
           tapToDismiss: false
@@ -100,7 +125,7 @@ export class FaleComponent implements OnInit {
         this.toastr.success('Conteúdo gravado com sucesso', 'Gravação concluída', {
           toastClass: 'toast-custom',
           progressBar: true,
-          closeButton: true,
+          closeButton: false,
           timeOut: 3000, // 3000 milissegundos = 3 segundos
           positionClass: 'toast-bottom-right', // Posição do toast
           tapToDismiss: false
@@ -136,27 +161,35 @@ export class FaleComponent implements OnInit {
 
   saveContent() {
     if (this.content.trim() !== '') {
-      this.savedContents.push(this.content.trim());
-      this.content = '';
-
-      localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
-
-      this.toastr.success('Texto salvo com sucesso', 'Gravação concluída', {
-        toastClass: 'toast-custom',
-        progressBar: true,
-        closeButton: true,
-        timeOut: 3000, // 3000 milissegundos = 3 segundos
-        positionClass: 'toast-bottom-right', // Posição do toast
-        tapToDismiss: false
-      });
-
+      if (this.savedContents.length < this.maxSavedContents) {
+        this.savedContents.push(this.content.trim());
+        this.content = '';
+        this.saveToLocalStorage(); // Chama a função para salvar no localStorage
+        this.toastr.success('Texto salvo com sucesso', 'Gravação concluída', {
+          toastClass: 'toast-custom',
+          progressBar: true,
+          closeButton: false,
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right',
+          tapToDismiss: false
+        });
+      } else {
+        this.toastr.warning('Limite de armazenamento atingido (10 gravações). Apague um item para salvar outro.', 'Aviso', {
+          toastClass: 'toast-warning', // Classe CSS para estilo de aviso
+          progressBar: true,
+          closeButton: false,
+          timeOut: 5000, // Aumentei o tempo para 5 segundos
+          positionClass: 'toast-bottom-right',
+          tapToDismiss: false
+        });
+      }
     } else {
       this.toastr.error('Nenhum conteúdo detectado. Tente novamente!', 'Erro de gravação', {
         toastClass: 'toast-error',
         progressBar: true,
-        closeButton: true,
-        timeOut: 3000, // 3000 milissegundos = 3 segundos
-        positionClass: 'toast-bottom-right', // Posição do toast
+        closeButton: false,
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right',
         tapToDismiss: false
       });
     }
@@ -173,7 +206,7 @@ export class FaleComponent implements OnInit {
       this.toastr.success('Conteúdo removido com sucesso', 'Remoção concluída', {
         toastClass: 'toast-custom',
         progressBar: true,
-        closeButton: true,
+        closeButton: false,
         timeOut: 3000, // 3000 milissegundos = 3 segundos
         positionClass: 'toast-bottom-right', // Posição do toast
         tapToDismiss: false

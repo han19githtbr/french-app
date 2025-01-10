@@ -19,6 +19,8 @@ export class OucaComponent implements OnInit {
   imageFound: boolean = false;
   currentIndex: number = -1;
   previousImage: boolean = false;
+  currentImageTimeout: any;
+  imageVisible: boolean = false;
 
   images: { description: string, url: string }[] = [
     { description: 'Courir', url: '../../../assets/img/correr.jpg' },
@@ -39,48 +41,61 @@ export class OucaComponent implements OnInit {
 
   }
 
-
   trackByImage(index: number, image: { description: string, url: string }): string {
     return image.description;
   }
 
-
   showNextImage(): void {
+    this.clearImageTimeout();
     this.currentIndex++;
     this.spokenWord = ''; // Limpa a palavra falada ao mudar a imagem
-    this.showImage(this.currentIndex);
+    this.showImage();
   }
 
   showPreviousImage(): void {
+    this.clearImageTimeout();
     this.currentIndex--;
-    this.showImage(this.currentIndex);
+    this.showImage();
   }
 
+  showImage(): void {
+    if (this.currentIndex >= 0 && this.currentIndex < this.images.length) {
+      this.previousImage = this.currentIndex > 0;
+      this.speakDescription(this.images[this.currentIndex].description);
+      this.spokenWord = this.images[this.currentIndex].description;
+      this.imageVisible = true;
 
-  showImage(index: number): void {
-    if (index >= 0 && index < this.images.length) {
-        this.previousImage = index > 0;
-        this.speakDescription(this.images[index].description);
-        this.spokenWord = this.images[index].description; // Exibe a palavra falada imediatamente
-        setTimeout(() => {
-            this.spokenWord = ''; // Limpa após 6 segundos
-        }, 6000);
+      this.clearImageTimeout(); // Clear any existing timeout before setting a new one
+
+      this.currentImageTimeout = setTimeout(() => {
+        // Only change the image if it's still the current one
+        this.imageVisible = false;
+      }, 6000);
     } else {
-        if (index >= this.images.length) {
-            this.currentIndex = this.images.length -1;
-            this.toastr.info("Você chegou ao final das imagens.", "Informação")
-        }
-         if (index < 0) {
-            this.currentIndex = 0;
-            this.toastr.info("Você está na primeira imagem.", "Informação")
-        }
+      this.handleOutOfBoundsIndex(this.currentIndex);
+    }
+  }
+
+  private handleOutOfBoundsIndex(index: number) {
+    if (index >= this.images.length) {
+      this.currentIndex = this.images.length - 1;
+      this.toastr.info("Você chegou ao final das imagens.", "Informação");
+    } else if (index < 0) {
+      this.currentIndex = 0;
+      this.toastr.info("Você está na primeira imagem.", "Informação");
+    }
+  }
+
+  private clearImageTimeout() {
+    if (this.currentImageTimeout) {
+      clearTimeout(this.currentImageTimeout);
+      this.currentImageTimeout = null;
     }
   }
 
   speakDescription(description: string): void {
     this.translationService.speakWord(description, this.language, this.speakingSpeed);
   }
-
 
   speakWord(): void {
     this.translationService.speakWord(this.word, this.language, this.speakingSpeed);

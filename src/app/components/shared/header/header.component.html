@@ -5,21 +5,27 @@
   </div>
   <ul class="nav-header-links" [ngClass]="{'show-menu': isMenuOpen}">
     <li class="nav-header-itens">
-      <a [routerLink]="['/']" (mouseover)="showLabel('home')">
+      <a [routerLink]="['/']"
+        (mouseover)="showLabel('home')"
+        (mouseout)="hideLabel('home')">
         <mat-icon class="icon">home</mat-icon>
       </a>
       <div class="icon-label" *ngIf="showHomeLabel">Home</div>
     </li>
 
     <li class="nav-header-itens">
-      <a [routerLink]="['/ouca']" routerLinkActive="active" (mouseover)="showLabel('ouvir')">
+      <a [routerLink]="['/ouca']" routerLinkActive="active"
+        (mouseover)="showLabel('ouvir')"
+        (mouseout)="hideLabel('ouvir')">
         <mat-icon class="icon">hearing</mat-icon>
       </a>
       <div class="icon-label" *ngIf="showOuvirLabel">Listen</div>
     </li>
 
     <li class="nav-header-itens">
-      <a [routerLink]="['/fale']" routerLinkActive="active" (mouseover)="showLabel('falar')">
+      <a [routerLink]="['/fale']" routerLinkActive="active"
+        (mouseover)="showLabel('falar')"
+        (mouseout)="hideLabel('falar')">
         <mat-icon class="icon">record_voice_over</mat-icon>
       </a>
       <div class="icon-label" *ngIf="showFalarLabel">Speak</div>

@@ -20,7 +20,6 @@ export class HeaderComponent {
 
   constructor() { }
 
-
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
@@ -80,4 +79,20 @@ export class HeaderComponent {
         break;
     }
   }
+
+
+  hideLabel(label: string) {
+    switch(label) {
+      case 'home':
+        this.showHomeLabel = false;
+        break;
+      case 'ouvir':
+        this.showOuvirLabel = false;
+        break;
+      case 'falar':
+        this.showFalarLabel = false;
+        break;
+    }
+  }
+
 }

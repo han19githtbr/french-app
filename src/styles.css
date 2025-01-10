@@ -58,14 +58,20 @@ body {
 }
 
 .toast-custom .toast-message {
-  background-color: #eaf2ff;
+  background-color: #ffffff;
   padding: 4px;
-  color: #0080c0;
+  font-weight: bold;
+  color: #000000;
+}
+
+.toast-warning {
+  border-radius: 4px;
 }
 
 .toast-custom .toast-title {
-  color: #0bafff;
+  color: #000000;
   padding: 4px;
+  font-weight: bold;
 }
 
 .toast-custom .toast-close-button {
@@ -82,8 +88,10 @@ body {
   background-color: #8de2ad;
 }
 
+
 .toast-error .toast-message {
-  color: #e60000;
+  color: #000000;
+  font-weight: bold;
 }
 
 @keyframes slideInRight {

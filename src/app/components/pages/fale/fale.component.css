@@ -70,7 +70,7 @@ textarea {
   height: 100px;
   padding: 10px;
   font-size: 16px;
-  border: 3px solid #ff0000;
+  border: 3px solid #0000ff;
   border-radius: 5px;
   resize: vertical;
   transition: border-color 0.3s ease;
@@ -159,8 +159,38 @@ button.recording {
 }
 
 .delete-button {
-  margin-top: 5px;
+  margin-top: -18px;
+  height: 26px;
+  width: 90px;
   cursor: pointer;
+  text-align: center;
+}
+
+.delete-container {
+  display: flex; /* Para alinhar o botão e a mensagem horizontalmente */
+  align-items: center; /* Para centralizar verticalmente */
+  position: relative; /* Necessário para posicionar a mensagem absolutamente */
+}
+
+.delete-message {
+  margin-left: 5px; /* Espaçamento entre o botão e a mensagem */
+  white-space: nowrap; /* Impede que a mensagem quebre para a próxima linha */
+  font-size: 18px;
+  color: white;
+  position: absolute; /* posicionamento absoluto para evitar que a mensagem altere o layout */
+  top: 50%;
+  transform: translateY(-320%);
+  left: calc(100% + 5px); /* posiciona a mensagem à direita do botão */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out; /* adiciona uma transição suave de opacidade */
+  pointer-events: none; /* Evita que a mensagem capture eventos do mouse */
+}
+.delete-container:hover .delete-message {
+  opacity: 1; /* Mostra a mensagem quando o container é hoverado */
+}
+
+.icon-delete {
+  margin-top: -16px;
 }
 
 .language-select-container {

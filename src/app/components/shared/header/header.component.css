@@ -13,11 +13,12 @@
 }
 
 .icon {
+  font-size: 25px;
   color: white;
 }
 
 .icon:hover {
-  color: #2bcd0e;
+  color: #0080ff;
   transition: 0.6s;
 }
 
