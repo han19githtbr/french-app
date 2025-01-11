@@ -88,7 +88,6 @@ body {
   background-color: #8de2ad;
 }
 
-
 .toast-error .toast-message {
   color: #000000;
   font-weight: bold;
@@ -123,7 +122,6 @@ html, body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
 }
-
 
 @import "../node_modules/ngx-toastr/toastr.css";
 
