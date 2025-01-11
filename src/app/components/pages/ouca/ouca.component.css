@@ -12,6 +12,7 @@
 .img-container {
   margin-top: -2rem;
   text-align: center;
+  margin-bottom: -100px;
 }
 
 .icon {
@@ -73,6 +74,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 5% 20px;
+  padding-bottom: 40px;
 }
 
 .translate-container input[type="text"],
@@ -115,7 +117,7 @@
   margin-left: 24px;
 }
 
-.gif-container {
+/*.gif-container {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -126,12 +128,12 @@
   text-align: center;
   align-items: center;
   margin-left: 24px;
-}
+}*/
 
-.gif-clique {
+/*.gif-clique {
   font-weight: bold;
   color: #0080c0;
-}
+}*/
 
 .card {
   position: relative;
@@ -206,10 +208,11 @@
   text-align: center;
   font-style: italic;
   margin-bottom: 20px;
+  font-size: 18px;
   color: white;
 }
 
-.clique_ouça {
+/*.clique_ouça {
   text-align: center;
   margin-top: 150px;
   color: #ff0000;
@@ -223,7 +226,7 @@
   color: #fdfdff;
   font-weight: boldr;
   font-size: 32px;
-}
+}*/
 
 .speed-control {
   display: flex;
@@ -370,5 +373,4 @@
     width: 220px;
     border: 2px solid #0000ff;
   }
-
 }

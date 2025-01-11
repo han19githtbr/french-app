@@ -101,6 +101,10 @@ export class OucaComponent implements OnInit {
     this.translationService.speakWord(this.word, this.language, this.speakingSpeed);
   }
 
+  onImageClick(description: string): void {
+    this.speakDescription(description);
+  }
+
   playAudio(audioUrl: string): void {
     const audio = new Audio(audioUrl);
     audio.playbackRate = this.speakingSpeed;
@@ -111,14 +115,9 @@ export class OucaComponent implements OnInit {
     this.speakingSpeed = event.target.value;
   }
 
-  onImageClick(description: string): void {
-    this.speakDescription(description);
-  }
-
   navigateToSearchResult(): void {
     if (this.searchKeyword.trim() !== '') {
       this.router.navigate(['/translate'], { queryParams: { q: this.searchKeyword } });
     }
   }
-
 }
