@@ -36,17 +36,23 @@ body {
 }
 
 .container_consultation {
+  padding-top: 50px;
   margin-top: 40px;
   text-align: center;
   background: none;
 }
 
-.container_consultation > img {
+.container_consultation img {
+  margin-top: -5rem;
+  width: 250px;
+}
+
+/*.container_consultation > img {
   margin-top: -3rem;
   width: 120px;
   border-radius: 50%;
-  border: 3px solid blue;
-}
+  border: 2px solid blue;
+}*/
 
 /* Estilo para a caixa de mensagem personalizada */
 .toast-custom {
