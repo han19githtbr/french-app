@@ -297,7 +297,7 @@ button.recording {
 
 .search-container-wrapper {
   position: fixed; /* Posiciona o container absolutamente */
-  top: 20px; /* Distância do topo */
+  top: 60px; /* Distância do topo */
   left: 20px; /* Distância da esquerda */
   z-index: 1000; /* Garante que fique acima de outros elementos */
   width: 300px;

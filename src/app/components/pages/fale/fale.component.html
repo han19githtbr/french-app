@@ -1,4 +1,3 @@
-  <h1 class="testar_fala">Grave e exercite a sua fala </h1>
   <div class="container_gravar">
     <img
       class="icone_gravar"
@@ -8,6 +7,7 @@
   </div>
   <div class="new-note-card">
     <i class="fa-thin fa-microphone"></i>
+    <h1 class="testar_fala">Grave e exercite a sua fala </h1>
     <button (click)="toggleRecording()" [ngClass]="{ 'recording': isRecording }">{{ isRecording ? 'Parar Gravação' : 'Iniciar Gravação' }}</button>
     <button (click)="clearContent()">Limpar Conteúdo</button>
     <div id="timer">{{ formatTime(timerValue) }}</div>
