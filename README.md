@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## criar um workflow no github
+
+mkdir .github
+
+cd .github
+
+mkdir workflows
+
+git add .github/workflows/ci.yml # Adiciona o arquivo ci.yml ao Git
+git commit -m "Adiciona workflow de CI" # Commita as alterações com uma mensagem descritiva
+git push origin main # Envia as alterações para o branch main no GitHub (ou o seu branch principal)
