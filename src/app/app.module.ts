@@ -8,7 +8,6 @@ import { FaleComponent } from './components/pages/fale/fale.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -24,7 +23,6 @@ import { MatIconModule } from '@angular/material/icon';
     FaleComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,

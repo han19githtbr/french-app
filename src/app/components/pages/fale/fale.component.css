@@ -129,7 +129,6 @@ button.recording {
   background-color: red;
 }
 
-
 /* ... (estilos do conteudo salvo) */
 
 .new-note-card .saved-content {
@@ -212,7 +211,6 @@ button.recording {
   }
 }
 
-
 .modal {
   position: fixed; /* Fixa o modal na tela */
   top: 0;
@@ -291,7 +289,6 @@ button.recording {
 .delete-button-modal:hover {
   background-color:rgb(154, 4, 19); /* Vermelho mais escuro no hover */
 }
-
 
 /* campo de busca */
 

@@ -40,3 +40,64 @@
 .icon-language {
   color: white;
 }
+
+/* Container principal */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  gap: 40px;
+  padding-bottom: 50px;
+  flex-wrap: wrap; /* Permite que os cards quebrem linha em telas menores */
+}
+
+/* Estilos gerais para os cards */
+.card {
+  width: 400px;
+  border-radius: 8px;
+  overflow: hidden; /* Garante que o conteúdo arredondado não vaze */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona um leve sombreamento */
+}
+
+/* Estilos para as imagens */
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover; /* Garante que a imagem seja cortada proporcionalmente */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: block;
+}
+
+/* Estilos para os parágrafos */
+.card p {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 8px 0;
+  background-color: black;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cards-container {
+    gap: 20px;
+  }
+
+  .card {
+    width: 90%; /* Ajusta o tamanho dos cards em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .card img {
+    height: 180px; /* Reduz a altura das imagens em telas muito pequenas */
+  }
+
+  .card p {
+    font-size: 16px; /* Diminui o tamanho do texto */
+  }
+}

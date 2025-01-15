@@ -29,7 +29,7 @@
     </div>
 
     <div *ngIf="savedContents.length > 0" class="saved-content">
-      <!--<h2>Conteúdo Salvo</h2>-->
+
       <div *ngFor="let savedContent of filteredContents" class="saved-item">
         <div class="card" (click)="openModal(savedContent)">
           <div class="card-header">
@@ -66,6 +66,3 @@
       </select>
     </div>
   </div>
-
-
-

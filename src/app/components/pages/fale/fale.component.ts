@@ -21,18 +21,15 @@ export class FaleComponent implements OnInit {
   modalContent: SavedContent | null = null;
   modalElement: any;
   savedContents: SavedContent[] = [];
-  //savedContents: string[] = []; // Array para armazenar o conteúdo salvo
   selectedLanguage: string = 'fr-FR'; // Idioma padrão para gravação
   showDeleteMessage: boolean = false;
   maxSavedContents: number = 10;
 
   constructor(private toastr: ToastrService, private elementRef: ElementRef, private renderer: Renderer2) {}
 
-
   ngAfterViewInit() {
     this.modalElement = this.elementRef.nativeElement.querySelector('.modal'); // Seleciona o elemento modal
   }
-
 
   ngOnInit() {
     this.loadSavedContents();
@@ -258,7 +255,6 @@ export class FaleComponent implements OnInit {
     }
   }
 
-
   formatTime(seconds: number): string {
     const minutes: number = Math.floor(seconds / 60);
     const remainingSeconds: number = seconds % 60;
@@ -292,5 +288,4 @@ export class FaleComponent implements OnInit {
 
     window.speechSynthesis.speak(utterance);
   }
-
 }

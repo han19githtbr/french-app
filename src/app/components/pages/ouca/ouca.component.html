@@ -6,7 +6,6 @@
     />
   </div>
 
-
   <h2 class="title">Escolha um idioma e <span>treine a sua audição</span></h2>
 
   <div class="speed-control">
@@ -31,22 +30,3 @@
       <button (click)="speakWord()">Pronunciar</button>
     </div>
   </div>
-
-
-  <!-- Feature -->
-
-  <!--<h2 class="clique_ouça"><span>Clique nas seguintes imagens</span> e ouça a pronúncia em Francês</h2>
-
-  <div class="no-images" *ngIf="currentIndex < 0">Clique em "Gerar Nova Imagem" para começar.</div>
-
-  <div class="button-container">
-    <button mat-raised-button color="white" (click)="showNextImage()"><span>Gerar Nova Imagem</span></button>
-    <button mat-raised-button color="accent" [disabled]="!previousImage" (click)="showPreviousImage()"><span>Revisar Imagem Anterior</span></button>
-  </div>
-
-  <div class="image-container">
-    <div class="card" *ngIf="imageVisible && currentIndex >= 0 && currentIndex < images.length" [ngClass]="{ blink: images[currentIndex].description === spokenWord }">
-      <img src="{{ images[currentIndex].url }}" alt="{{ images[currentIndex].description }}">
-      <div class="spoken-word" *ngIf="spokenWord === images[currentIndex].description">{{ spokenWord }}</div>
-    </div>
-  </div>-->
