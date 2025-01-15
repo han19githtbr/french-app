@@ -23,6 +23,7 @@
   gap: 10px;
   bottom: 0;
   margin-top: 150px;
+  flex-wrap: wrap;
 }
 
 .saved-content h3 {
@@ -85,12 +86,6 @@ textarea:focus {
   border-color: #4CAF50;
 }
 
-.new-note-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 textarea {
   width: 100%;
   height: 200px;
@@ -134,64 +129,204 @@ button.recording {
   background-color: red;
 }
 
+
+/* ... (estilos do conteudo salvo) */
+
+.new-note-card .saved-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(400px, 1fr)); /* Responsivo com mínimo de 300px */
+  grid-gap: 10px;
+  margin-top: 20px;
+}
+
 .saved-item {
+  padding: 10px;
+}
+
+.saved-content .card {
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Indica que é clicável */
+  height: 150px; /* Altura fixa para os cards */
+  overflow: hidden; /* Esconde o texto que ultrapassa a altura */
   display: flex;
-  align-items: center;
-}
-
-.saved-content > h2 {
-  margin-bottom: 25px;
-  margin-top: 25px;
+  flex-direction: column;
+  background-color: #333;
   color: white;
-  text-decoration: underline;
-  text-align: center;
+  justify-content: space-between; /* Alinha o conteúdo verticalmente */
+  position: relative;
+  box-sizing: border-box;
 }
 
-.text-content {
-  flex: 1;
-  margin-right: 10px;
-  height: 39px;
+.saved-content .card:hover {
+  background-color: #000000;
+  border: 2px solid blue;
+}
+
+.saved-content .card .card-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.saved-content .card .card-body {
+  flex-grow: 1; /* Permite que o corpo cresça e ocupe o espaço disponível */
+  overflow: hidden; /* Esconde o texto que ultrapassa a altura */
+}
+
+.saved-content .card .delete-container{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
+}
+
+.saved-content .card .delete-container .delete-button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+
+/* Estilos para o grid (responsividade) */
+.saved-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 colunas responsivas */
+  grid-gap: 10px; /* Espaçamento entre os cartões */
+}
+
+
+@media (max-width: 1200px) {
+  .new-note-card .saved-content {
+    //grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta para telas menores */
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+}
+
+/* Media query para telas menores (ex: mobile) */
+@media (max-width: 768px) {
+  .new-note-card .saved-content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta para telas menores */
+  }
+}
+
+
+.modal {
+  position: fixed; /* Fixa o modal na tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+  opacity: 1; /* Inicialmente invisível */
+  transform: scale(0.8); /* Escala inicial menor para o efeito de "zoom" */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transições suaves */
+}
+
+.modal.show { /* Classe adicionada quando o modal deve ser exibido */
+  opacity: 1; /* Torna o modal visível */
+  transform: scale(1); /* Restaura a escala normal */
+}
+
+.modal-content {
+  background-color:rgb(26, 25, 25);
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 600px; /* Largura máxima do modal */
+  width: 90%; /* Largura responsiva */
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: red;
+}
+
+.modal-header {
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-body {
+  margin-bottom: 10px;
+  max-height: 200px; /* Altura máxima do conteúdo */
+  overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo exceder a altura */
+}
+
+.modal-body p {
   color: white;
   font-size: 20px;
-  border-radius: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
-.delete-button {
-  margin-top: -18px;
-  height: 26px;
-  width: 90px;
-  cursor: pointer;
-  text-align: center;
+.modal-footer {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  text-align: right;
 }
 
-.delete-container {
-  display: flex; /* Para alinhar o botão e a mensagem horizontalmente */
-  align-items: center; /* Para centralizar verticalmente */
-  position: relative; /* Necessário para posicionar a mensagem absolutamente */
-}
-
-.delete-message {
-  margin-left: 5px; /* Espaçamento entre o botão e a mensagem */
-  white-space: nowrap; /* Impede que a mensagem quebre para a próxima linha */
-  font-size: 18px;
+.delete-button-modal {
+  background-color: #dc3545; /* Vermelho */
   color: white;
-  position: absolute; /* posicionamento absoluto para evitar que a mensagem altere o layout */
-  top: 50%;
-  transform: translateY(-320%);
-  left: calc(100% + 5px); /* posiciona a mensagem à direita do botão */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out; /* adiciona uma transição suave de opacidade */
-  pointer-events: none; /* Evita que a mensagem capture eventos do mouse */
-}
-.delete-container:hover .delete-message {
-  opacity: 1; /* Mostra a mensagem quando o container é hoverado */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.icon-delete {
-  margin-top: -16px;
+.delete-button-modal:hover {
+  background-color:rgb(154, 4, 19); /* Vermelho mais escuro no hover */
 }
+
+
+/* campo de busca */
+
+.search-container-wrapper {
+  position: fixed; /* Posiciona o container absolutamente */
+  top: 20px; /* Distância do topo */
+  left: 20px; /* Distância da esquerda */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  width: 300px;
+}
+
+.search-container {
+  display: flex; /* Usa flexbox para alinhar o input e o ícone */
+  align-items: center; /* Alinha verticalmente */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.search-container input[type="text"] {
+  border: none;
+  padding: 5px;
+  outline: none; /* Remove a borda ao clicar no input */
+  flex-grow: 1; /* Permite que o input cresça e ocupe o espaço */
+  width: 250px;
+}
+
+.search-container i {
+  margin-left: 5px; /* Espaçamento entre o input e o ícone */
+  color: #777; /* Cor do ícone */
+}
+
+/* ... outros estilos */
 
 .language-select-container {
   position: fixed;

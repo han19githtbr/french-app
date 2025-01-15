@@ -22,21 +22,37 @@
       Sem conteúdo para reproduzir.
     </div>
 
+    <div class="search-container-wrapper">
+      <div class="search-container">
+          <mat-icon>search</mat-icon> <input type="text" placeholder="Busque em suas notas" [(ngModel)]="searchTerm" />
+      </div>
+    </div>
+
     <div *ngIf="savedContents.length > 0" class="saved-content">
-      <h2>Conteúdo Salvo</h2>
-      <div *ngFor="let savedContent of savedContents" class="saved-item">
-        <div class="text-content">{{ savedContent }}</div>
-        <div class="delete-container">
-          <button
-            class="delete-button"
-            (click)="deleteContent(savedContent)"
-            (touchstart)="deleteContent(savedContent)"
-            (touchend)="$event.preventDefault()"
-            (mouseover)="showDeleteMessage = true"
-            (mouseout)="showDeleteMessage = false">
-            <mat-icon class="icon-delete">delete</mat-icon>
-          </button>
-          <span class="delete-message" *ngIf="showDeleteMessage">Apagar conteúdo</span>
+      <!--<h2>Conteúdo Salvo</h2>-->
+      <div *ngFor="let savedContent of filteredContents" class="saved-item">
+        <div class="card" (click)="openModal(savedContent)">
+          <div class="card-header">
+            {{ savedContent.date | date:'dd/MM/yyyy HH:mm:ss' }}
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ savedContent.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="modalContent" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" (click)="closeModal()">&times;</span>
+        <div class="modal-header">
+          {{ modalContent.date | date:'dd/MM/yyyy HH:mm:ss' }}
+        </div>
+        <div class="modal-body">
+          <p>{{ modalContent.text }}</p>
+        </div>
+        <div class="modal-footer">
+          <button class="delete-button-modal" (click)="deleteContent(modalContent); closeModal()">Apagar Nota</button>
         </div>
       </div>
     </div>
@@ -50,3 +66,6 @@
       </select>
     </div>
   </div>
+
+
+

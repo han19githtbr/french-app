@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+
+interface SavedContent {
+  text: string;
+  date: Date;
+}
 
 @Component({
   selector: 'app-fale',
@@ -12,20 +17,34 @@ export class FaleComponent implements OnInit {
   timerValue: number = 120; // 2 minutos em segundos
   timer: any; // Referência ao temporizador
   recognition: any; // Referência ao reconhecimento de fala
-  savedContents: string[] = []; // Array para armazenar o conteúdo salvo
+  searchTerm: string = '';
+  modalContent: SavedContent | null = null;
+  modalElement: any;
+  savedContents: SavedContent[] = [];
+  //savedContents: string[] = []; // Array para armazenar o conteúdo salvo
   selectedLanguage: string = 'fr-FR'; // Idioma padrão para gravação
   showDeleteMessage: boolean = false;
   maxSavedContents: number = 10;
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService, private elementRef: ElementRef, private renderer: Renderer2) {}
+
+
+  ngAfterViewInit() {
+    this.modalElement = this.elementRef.nativeElement.querySelector('.modal'); // Seleciona o elemento modal
+  }
 
 
   ngOnInit() {
-    const savedContents = localStorage.getItem('savedContents');
+    this.loadSavedContents();
+  }
 
-    if (savedContents) {
-      this.savedContents = JSON.parse(savedContents);
+  get filteredContents(): SavedContent[] {
+    if (!this.searchTerm) {
+      return this.savedContents;
     }
+    return this.savedContents.filter(content =>
+      content.text.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
   loadSavedContents() {
@@ -33,17 +52,12 @@ export class FaleComponent implements OnInit {
     if(savedContents) {
       try {
         this.savedContents = JSON.parse(savedContents);
-        if(this.savedContents.length > this.maxSavedContents) {
-          this.savedContents = this.savedContents.slice(0, this.maxSavedContents);
-          this.saveToLocalStorage();
-        }
+        this.savedContents.forEach(content => content.date = new Date(content.date));
       } catch (error) {
         console.error("Erro ao analisar o localStorage:", error);
         localStorage.removeItem('savedContents');
         this.savedContents = [];
       }
-    } else {
-      this.savedContents = [];
     }
   }
 
@@ -162,9 +176,13 @@ export class FaleComponent implements OnInit {
   saveContent() {
     if (this.content.trim() !== '') {
       if (this.savedContents.length < this.maxSavedContents) {
-        this.savedContents.push(this.content.trim());
+        const newContent: SavedContent = {
+          text: this.content.trim(),
+          date: new Date()
+        };
+        this.savedContents.push(newContent);
         this.content = '';
-        this.saveToLocalStorage(); // Chama a função para salvar no localStorage
+        this.saveToLocalStorage();
         this.toastr.success('Texto salvo com sucesso', 'Gravação concluída', {
           toastClass: 'toast-custom',
           progressBar: true,
@@ -175,43 +193,39 @@ export class FaleComponent implements OnInit {
         });
       } else {
         this.toastr.warning('Limite de armazenamento atingido (10 gravações). Apague um item para salvar outro.', 'Aviso', {
-          toastClass: 'toast-warning', // Classe CSS para estilo de aviso
+          toastClass: 'toast-warning',
           progressBar: true,
           closeButton: false,
-          timeOut: 5000, // Aumentei o tempo para 5 segundos
+          timeOut: 5000,
           positionClass: 'toast-bottom-right',
           tapToDismiss: false
         });
       }
     } else {
-      this.toastr.error('Nenhum conteúdo detectado. Tente novamente!', 'Erro de gravação', {
-        toastClass: 'toast-error',
+        this.toastr.error('Nenhum conteúdo detectado. Tente novamente!', 'Erro de gravação', {
+            toastClass: 'toast-error',
+            progressBar: true,
+            closeButton: false,
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right',
+            tapToDismiss: false
+          });
+    }
+  }
+
+
+  deleteContent(contentToDelete: SavedContent) {
+    this.savedContents = this.savedContents.filter(content => content !== contentToDelete);
+    this.saveToLocalStorage();
+    this.closeModal();
+    this.toastr.success('Conteúdo removido com sucesso', 'Remoção concluída', {
+        toastClass: 'toast-custom',
         progressBar: true,
         closeButton: false,
         timeOut: 3000,
         positionClass: 'toast-bottom-right',
         tapToDismiss: false
       });
-    }
-  }
-
-  deleteContent(content: string) {
-    console.log("deleteContent chamado para:", content);
-    const index = this.savedContents.indexOf(content);
-    if (index !== -1) {
-      this.savedContents.splice(index, 1);
-      // *** ADICIONADO: Atualiza o localStorage após a deleção ***
-      localStorage.setItem('savedContents', JSON.stringify(this.savedContents));
-
-      this.toastr.success('Conteúdo removido com sucesso', 'Remoção concluída', {
-        toastClass: 'toast-custom',
-        progressBar: true,
-        closeButton: false,
-        timeOut: 3000, // 3000 milissegundos = 3 segundos
-        positionClass: 'toast-bottom-right', // Posição do toast
-        tapToDismiss: false
-      });
-    }
   }
 
   clearContent() {
@@ -224,6 +238,26 @@ export class FaleComponent implements OnInit {
     this.timerValue = 120;
     this.timer = null;
   }
+
+  openModal(content: SavedContent) {
+    console.log("openModal() foi chamado com:", content);
+    this.modalContent = content;
+    if (this.modalElement) {
+        this.renderer.addClass(this.modalElement, 'show'); // Adiciona a classe 'show'
+    }
+  }
+
+  closeModal() {
+    if (this.modalElement) {
+        this.renderer.removeClass(this.modalElement, 'show'); // Remove a classe 'show'
+        setTimeout(() => {
+            this.modalContent = null;
+        }, 300); // Aguarda a transição antes de limpar o conteúdo
+    } else {
+        this.modalContent = null;
+    }
+  }
+
 
   formatTime(seconds: number): string {
     const minutes: number = Math.floor(seconds / 60);
