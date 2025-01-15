@@ -16,15 +16,19 @@ jobs:
         with:
           node-version: 18
       - name: Install Dependencies
+        working-directory: ./french-app # Adicionado!
         run: npm ci
       - name: Install Angular CLI (local)
-        run: npm install # ou npm install -g @angular/cli
+        working-directory: ./french-app # Adicionado!
+        run: npm install
       - name: Build Angular App
-        run: npx ng build # ou npm run ng build
+        working-directory: ./french-app # Adicionado!
+        run: npx ng build
       - name: Run Tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+        working-directory: ./french-app # Adicionado!
+        run: npx ng test --watch=false --browsers=ChromeHeadless
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: dist
-          path: dist/app # Verifique se este caminho está correto!
+          path: french-app/dist/app # Adicionado french-app/ aqui!
