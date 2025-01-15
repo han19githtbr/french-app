@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main] # Executa em pushes no branch main
+    branches: [master] # Executa em pushes no branch main
   pull_request:
-    branches: [main] # Executa em pull requests para o branch main
+    branches: [master] # Executa em pull requests para o branch main
 
 jobs:
   build:
