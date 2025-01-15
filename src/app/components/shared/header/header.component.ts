@@ -78,7 +78,6 @@ export class HeaderComponent {
     }
   }
 
-
   hideLabel(label: string) {
     switch(label) {
       case 'home':

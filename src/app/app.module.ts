@@ -37,7 +37,6 @@ import { MatIconModule } from '@angular/material/icon';
       positionClass: 'toast-bottom-right',
       toastClass: 'toast-custom' // Define a classe de posição
     }),
-
   ],
   providers: [TranslationService],
   bootstrap: [AppComponent]
