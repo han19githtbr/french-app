@@ -16,19 +16,19 @@ jobs:
         with:
           node-version: 18
       - name: Install Dependencies
-        working-directory: ./french-app # Adicionado!
+        working-directory: ${{ github.workspace }} # Correção definitiva!
         run: npm ci
       - name: Install Angular CLI (local)
-        working-directory: ./french-app # Adicionado!
+        working-directory: ${{ github.workspace }} # Correção definitiva!
         run: npm install
       - name: Build Angular App
-        working-directory: ./french-app # Adicionado!
+        working-directory: ${{ github.workspace }} # Correção definitiva!
         run: npx ng build
       - name: Run Tests
-        working-directory: ./french-app # Adicionado!
+        working-directory: ${{ github.workspace }} # Correção definitiva!
         run: npx ng test --watch=false --browsers=ChromeHeadless
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: dist
-          path: french-app/dist/app # Adicionado french-app/ aqui!
+          path: dist/app # Caminho correto dentro do dist (sem o nome do projeto na frente)
