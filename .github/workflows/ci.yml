@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main] # Executa em pushes no branch main
+  pull_request:
+    branches: [main] # Executa em pull requests para o branch main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Executa em um ambiente Ubuntu
+
+    steps:
+      - uses: actions/checkout@v3 # Faz o checkout do código do repositório
+      - name: Use Node.js 18 # Define a versão do Node.js para 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies # Instala as dependências
+        run: npm ci # ou yarn install --frozen-lockfile (se usar Yarn)
+      - name: Build Angular App # Builda a aplicação Angular
+        run: npm run build -- --prod # Comando de build em produção
+      - name: Run Tests # Executa os testes unitários
+        run: npm run test -- --watch=false --browsers=ChromeHeadless # Executa os testes sem watch e em modo headless
+      - name: Upload Artifact # Armazena o artefato (build) para uso posterior
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist # Nome do artefato
+          path: dist/app # Caminho para a pasta de build (MUITO IMPORTANTE: verifique o nome correto!)
