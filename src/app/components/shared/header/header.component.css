@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 480px) {
   .icon {
-    font-size: 35px; /* Aumenta o tamanho dos ícones */
+    font-size: 25px; /* Aumenta o tamanho dos ícones */
   }
 
   .icon-label {
@@ -111,7 +111,7 @@
   }
 
   .icon {
-    font-size: 35px; /* Aumenta o tamanho dos ícones */
+    font-size: 25px; /* Aumenta o tamanho dos ícones */
   }
 
   .icon-label {

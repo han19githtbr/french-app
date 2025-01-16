@@ -37,3 +37,8 @@ mkdir workflows
 git add .github/workflows/ci.yml # Adiciona o arquivo ci.yml ao Git
 git commit -m "Adiciona workflow de CI" # Commita as alterações com uma mensagem descritiva
 git push origin main # Envia as alterações para o branch main no GitHub (ou o seu branch principal)
+
+
+What script should be run before every deploy?
+
+npx ng build --configuration production

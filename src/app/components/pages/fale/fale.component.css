@@ -389,8 +389,41 @@ button.recording {
   }
 }
 
+
 @media screen and (max-width: 600px) {
   textarea {
     max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  textarea {
+    max-width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .new-note-card .gravou {
+    //width: auto;
+    max-width: 400px;
+  }
+
+  .search-container-wrapper {
+    position: fixed; /* Posiciona o container absolutamente */
+    top: 180px; /* Distância do topo */
+    left: 10px; /* Distância da esquerda */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    width: 250px;
+  }
+
+  .search-container {
+    display: flex; /* Usa flexbox para alinhar o input e o ícone */
+    align-items: center; /* Alinha verticalmente */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
   }
 }
