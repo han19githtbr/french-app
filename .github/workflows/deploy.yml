@@ -1,0 +1,37 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        working-directory: ${{ github.workspace }}
+        run: npm ci
+      - name: Install Angular CLI (local)
+        working-directory: ${{ github.workspace }}
+        run: npm install
+      - name: Build Angular App
+        working-directory: ${{ github.workspace }}
+        run: npx ng build --configuration production
+      - name: Decode the JSON secret
+        id: decode_secret
+        shell: bash
+        run: |
+          SECRET_JSON=$(echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_APPFRENCH_A0C06 }}")
+          echo "::set-output name=decoded::$SECRET_JSON" # Passa o JSON inteiro
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ steps.decode_secret.outputs.decoded }}' # Usando o JSON decodificado
+          channelId: live
+          projectId: appfrench-a0c06
